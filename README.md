@@ -2,6 +2,11 @@
 
 Site de studiu făcut din notițele tale (11 poze): notițe interactive, carduri cu repetare la intervale, completări, întrebări, jocuri, test simulat, axă a timpului și trucuri de memorare.
 
+## Online
+
+Site-ul e publicat cu GitHub Pages la https://calinnedelcu.github.io/pregatire-test-istorie/ (public: oricine are linkul poate vedea notițele și pozele).
+Ca să publici o schimbare: `git add -A && git commit -m "..." && git push`; Pages se actualizează singur în cel mult un minut.
+
 ## Cum îl deschizi
 
 - Dublu-click pe `index.html` (merge direct din folder; fonturile se încarcă de pe internet, fără ele folosește fonturile sistemului).
@@ -26,4 +31,4 @@ Site de studiu făcut din notițele tale (11 poze): notițe interactive, carduri
 
 ## Publicare
 
-Folderul e static: îl poți urca așa cum e pe GitHub Pages, Netlify sau Vercel.
+Folderul e static (fără pas de build): rămâne publicat din ramura `main`, rădăcina depozitului. Îl poți muta la fel de ușor pe Netlify sau Vercel.
