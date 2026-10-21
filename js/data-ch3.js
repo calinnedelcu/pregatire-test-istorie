@@ -53,8 +53,9 @@
   > Caietul 1: „nou impuls dat cercetării”. Caietul 2: „un nou impuls dat științei”. Caietul 3: „un nou impuls dat curiozit., cercet. științ…” (prescurtat; probabil „curiozității, cercetării științifice”).
 - **Biserica** este **afectată**
 
-## desc-mari | Mari descoperiri | 8,10,11 | test
+## desc-mari | Mari descoperiri | 8,10,11
 > Caietul 3 scrie titlul „Mari descoperitori”; caietele 1 și 2 scriu „Mari descoperiri”.
+> În caietul 1, cuvântul „TEST” e încercuit deasupra titlului acestei pagini. Testul e din toate cele 3 capitole, nu doar din această parte.
 - **Henric Navigatorul** – rege al **Portugaliei**
   ?> În caiete scrie „rege al Portugaliei”. În manualele de istorie, Henric Navigatorul este numit de obicei prinț (infante) al Portugaliei. Pentru test, ține minte formularea din caiet.
   - a sprijinit **coasta Africii** {c:1}

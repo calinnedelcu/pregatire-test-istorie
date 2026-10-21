@@ -94,9 +94,7 @@
       var st = chapterStats(ch);
       return h('div.card.chcard',
         h('div', h('div.code', ch.code), h('h3', ch.title),
-          ch.sections.some(function (s) { return s.opts.indexOf('test') >= 0; })
-            ? h('div.row', { style: 'margin-top:8px;gap:8px' }, h('span.stamp', 'TEST'), h('span.small.muted', 'încercuit în caiet: „Mari descoperiri”'))
-            : null),
+          h('div.row', { style: 'margin-top:8px;gap:8px' }, h('span.stamp', 'TEST'), h('span.small.muted', 'intră la test'))),
         h('div.meta',
           h('div', h('span', 'Notițe citite'), h('b', st.read + ' / ' + st.total)),
           h('div', h('span', 'Carduri stăpânite'), h('b', st.cs.tiers[3] + ' / ' + st.cs.total)),
@@ -265,15 +263,20 @@
     function start() {
       var chs = Object.keys(sel).filter(function (k) { return sel[k]; });
       if (!chs.length) { U.toast('Alege cel puțin un capitol'); return; }
-      var per = Math.ceil(n / chs.length), qs = [];
-      chs.forEach(function (c) { qs = qs.concat(Quiz.pick({ chs: [c], n: per, minLvl: hard ? 3 : 0 })); });
-      qs = U.shuffle(qs).slice(0, n);
+      // același număr de întrebări din fiecare capitol; restul împărțirii merge la capitole alese la întâmplare
+      var each = Math.floor(n / chs.length), extra = n % chs.length, minLvl = hard ? 3 : 0, qs = [];
+      U.shuffle(chs).forEach(function (c, i) { qs = qs.concat(Quiz.pick({ chs: [c], n: each + (i < extra ? 1 : 0), minLvl: minLvl })); });
+      if (qs.length < n) { // un capitol are prea puține întrebări (de ex. la „doar grele”): completează din celelalte
+        var have = {}; qs.forEach(function (q) { have[q.id] = true; });
+        qs = qs.concat(Quiz.pick({ chs: chs, n: n + qs.length, minLvl: minLvl }).filter(function (q) { return !have[q.id]; }).slice(0, n - qs.length));
+      }
+      qs = U.shuffle(qs);
       var total = qs.length;
       App.go('testrun', { qs: qs.map(function (q) { return q.id; }), total: total, timed: timed });
     }
     var hist = S.data.tests.slice(-5).reverse();
     return h('div.stack',
-      h('div.page-head', h('div', h('h1', 'Test simulat'), h('p', 'Întrebări amestecate din tot materialul, ca la test. Nu primești răspunsurile pe parcurs; la final vezi nota estimată și greșelile.'))),
+      h('div.page-head', h('div', h('h1', 'Test simulat'), h('p', 'Testul e din toate cele ' + D.chapters.length + ' capitole, așa că întrebările se iau în părți egale din fiecare. Nu primești răspunsurile pe parcurs; la final vezi nota estimată și greșelile.'))),
       h('div.card.opts-card', h('div.field', h('span.lab', 'Capitole'), chipsCh), h('div.field', h('span.lab', 'Lungime'), chipsN), h('div.field', timerBtn), h('div.field', hardBtn), info, h('button.btn.primary.lg', { onClick: start }, 'Începe testul')),
       hist.length ? h('div.card', h('h3', { style: 'margin-bottom:10px' }, 'Ultimele teste'), h('div.stack', hist.map(function (t) {
         return h('div.row', { style: 'justify-content:space-between' }, h('span', new Date(t.t).toLocaleDateString('ro-RO', { day: 'numeric', month: 'short' }) + ' · ' + t.n + ' întrebări'), h('b', 'Nota ' + t.grade.toFixed(1).replace('.', ',') + ' · ' + Math.round(t.pct * 100) + '%'));

@@ -351,7 +351,7 @@
     // capul capitolului
     var readCount = ch.sections.filter(function (s) { return g.Store.data.read[s.id]; }).length;
     content.appendChild(h('div.ch-head',
-      h('div.row', h('h1', ch.title), h('span.ch-code', ch.code)),
+      h('div.row', h('h1', ch.title), h('span.ch-code', ch.code), h('span.stamp', { title: 'Capitolul intră la test' }, 'TEST')),
       ch.subtitle ? h('p.sub', ch.subtitle) : null,
       h('div.row', h('span.chip.' + ch.cls, readCount + ' / ' + ch.sections.length + ' secțiuni citite'), ch.photos.length ? photoLink(ch.photos, 'Toate pozele originale') : null)
     ));
@@ -359,7 +359,7 @@
       h('p', 'Textul de mai jos e preluat din notițele tale, rând cu rând. ',
         h('span.kw', 'Galbenul'), ' marchează cuvintele-cheie; ',
         h('span.fix', 'liniuța punctată'), ' arată o greșeală de tipar corectată (atinge-o ca să vezi ce scria); ',
-        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. La fiecare secțiune ai butonul cu poza originală.')));
+        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. La fiecare secțiune ai butonul cu poza originală. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
 
     var toc = h('div.toc', { role: 'navigation', 'aria-label': 'Secțiunile capitolului' }, ch.sections.map(function (sec, i) {
       return h('button.chip' + (g.Store.data.read[sec.id] ? '.ok' : ''), { title: sec.title, onClick: function () {
@@ -442,7 +442,6 @@
     var el = h('section.sec' + (isRead ? '.read' : ''), { id: 'sec-' + sec.id },
       h('div.sec-head',
         h('h2', sec.title),
-        sec.opts.indexOf('test') >= 0 ? h('span.stamp', { title: 'În caiet, această parte e încercuită cu „TEST”' }, 'TEST') : null,
         sec.photos.length ? photoLink(sec.photos, sec.photos.length > 1 ? 'Pozele originale' : 'Poza originală') : null
       )
     );
