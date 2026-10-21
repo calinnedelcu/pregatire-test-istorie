@@ -79,7 +79,7 @@
 ## etno-politica | O problemă politică: Romanitatea românilor și lupta pt emancipare politică și națională | 3,4
 - Sf sec **XVII** și începutul sec **XVIII**: prime semne ale apariției **conștiinței naționale**
 - Interese contradictorii în **Transilvania** între **români, unguri și austrieci**
-- Românii sunt doar **toleraţi** ceea ce este justificat de unguri prin
+- Românii sunt doar **tolerați** ceea ce este justificat de unguri prin
   - **Ortodoxia** noastră
   - „**{{Întâietatea|Înâietatea}}**” lor aici
 - Lupta pentru întâietate este lupta pentru **drepturi politice**

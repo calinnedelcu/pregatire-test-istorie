@@ -49,7 +49,7 @@
         if (r.lucrare && dupWork[r.lucrare] === 1) {
           var c2 = {
             id: 'tw-' + r.n, kind: 'qa', sec: 'etno-formarea', ch: 'etno', tag: 'tabel',
-            q: '„' + r.lucrare + '” — cine e autorul, din ce secol este și ce menționează despre români?',
+            q: '„' + r.lucrare + '” — ' + (/^Cronic/.test(r.autor) ? 'ce e trecut la coloana „autorul”' : 'cine e autorul') + ', din ce secol este și ce menționează despre români?',
             a: '**' + r.autor + '**, sec. ' + r.sec + ' — ' + r.mentiune,
             rowNote: 'Tabelul surselor, rândul ' + r.n
           };

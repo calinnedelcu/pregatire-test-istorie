@@ -35,7 +35,7 @@
     { y: '1859', k: 1859, t: 'Se afirmă conștiința de neam', ch: 'etno' },
     { y: '1877 – 1878', k: 1877, t: 'Se afirmă conștiința de neam', ch: 'etno' },
     { y: '1918', k: 1918, t: 'Se afirmă conștiința de neam', n: 'După 1918 disputa continuă: Iorga, Pârvan, Gh Brătianu.', ch: 'etno' },
-    { y: 'după 1965', k: 1966, t: 'Se dorește revitalizarea sentimentului național', n: 'Factorul roman minimizat, geto-dacii accentuați, izvoare arheologice supralicitate.', ch: 'etno' },
+    { y: 'după 1965', k: 1966, t: 'Se dorește revitalizarea sentimentului național', n: 'Factorul roman minimizat, factorul geto-dac accentuat, izvoare arheologice supralicitate.', ch: 'etno' },
     { y: 'după aderarea la UE', k: 2007, t: 'Disputa politică despre romanitate nu ar mai trebui să aibă conținut', ch: 'etno' }
   );
 
@@ -55,18 +55,18 @@
         { t: 'sec. XII – XIII', items: ['XII Ioan Kynamos: Vlahi', 'XII Anonymus (Cronică): popoare din Transilvania', 'XIII Ioniță cel Frumos: originea etnică și mândria', 'XIII Simon de Keza (Cronică): păstorii romanilor'] }
       ],
       tip: 'Numărul de autori pe secol: VII 1 · IX 2 · X 1 · XI 2 · XII 2 · XIII 2. „Romani” apare de două ori: la Mauricius și la Constantin Porfirogenetul. „Cronică” e lucrarea lui Anonymus și a lui Simon de Keza.' },
-    { id: 'mn-neam', ch: 'etno', title: 'Când se afirmă conștiința de neam', phrase: '**1848** · **1859** · **1877 – 1878** · **1918**', tip: 'Patru popasuri, din 11 în 11 ani la început: 1848, 1859; apoi 1877–1878 și, în final, 1918.' },
+    { id: 'mn-neam', ch: 'etno', title: 'Când se afirmă conștiința de neam', phrase: '**1848** · **1859** · **1877 – 1878** · **1918**', tip: '1848 și 1859 sunt la 11 ani distanță; apoi urmează 1877 – 1878 și 1918.' },
     { id: 'mn-comunista', ch: 'etno', title: 'Istoriografia comunistă: ce se schimbă',
-      chunks: [{ t: 'Teoriile staliniste', items: ['stăpânirea romană: imperialistă și sclavagistă', 'slavii: civilizatori'] }, { t: 'După 1965', items: ['factorul roman: minimizat, asupritor', 'geto-dacii: accentuați', 'izvoarele arheologice: supralicitate'] }],
+      chunks: [{ t: 'Teoriile staliniste', items: ['stăpânirea romană: imperialistă și sclavagistă', 'slavii: civilizatori'] }, { t: 'După 1965', items: ['factorul roman: minimizat, asupritor', 'factorul geto-dac: accentuat', 'izvoarele arheologice: supralicitate'] }],
       tip: 'În ambele perioade romanii sunt priviți negativ. Diferența: la început sunt lăudați slavii, după 1965 sunt puși în față geto-dacii și arheologia.' },
-    { id: 'mn-cronicari', ch: 'calatori', title: 'Cei trei cărturari moldoveni, într-un cuvânt',
+    { id: 'mn-cronicari', ch: 'calatori', title: 'Cei trei cărturari din „Peregrini și cronicari”, într-un cuvânt',
       phrase: '**Ureche** = oral (povestește) · **Costin** = drumuri (deschizător de drumuri) · **Neculce** = samă („O samă de cuvinte”)',
       tip: 'Ureche: stil narator, asemănător celui oral. Costin: deschizător de drumuri în istorie, geografie istorică, etnografie. Neculce: „O samă de cuvinte”.' },
     { id: 'mn-europeni', ch: 'calatori', title: 'Europeni și universaliști: câte un cuvânt fiecare',
       chunks: [{ t: 'Cantemir', items: ['Curtea otomană', 'istorie, folclor, teologie islamică, muzică'] }, { t: 'Olahus', items: ['Hungaria', 'caracterul latin al limbii'] }, { t: 'Milescu', items: ['China', 'poliglot, hărți, mongoli și chinezi'] }, { t: 'Cantacuzino', items: ['Țara Românească', 'continuitate, hartă'] }, { t: 'Golescu', items: ['primul jurnal', 'sprijină învățământul'] }, { t: 'Cârțan', items: ['Roma de trei ori', 'carte românească în Ardeal'] }],
-      tip: 'Un loc pentru fiecare: Curte, Ungaria, China, Țara Românească, jurnal, Roma.' },
+      tip: 'Câte un cuvânt-cheie fiecare: Curte, Ungaria, China, Țara Românească, jurnal, Roma.' },
     { id: 'mn-nasteri', ch: 'calatori', title: 'Anii nașterii, în grupe',
-      chunks: [{ t: 'Cel mai vechi', items: ['1493 Olahus', '1596 Ureche'] }, { t: 'Trei apropiați', items: ['1633 Costin', '1636 Milescu', '1640 Cantacuzino'] }, { t: 'Doi vecini', items: ['1672 Neculce', '1673 Cantemir'] }, { t: 'Târziu', items: ['1777 Golescu', '1849 Cârțan'] }],
+      chunks: [{ t: 'Cei mai vechi', items: ['1493 Olahus', '1596 Ureche'] }, { t: 'Trei apropiați', items: ['1633 Costin', '1636 Milescu', '1640 Cantacuzino'] }, { t: 'Doi vecini', items: ['1672 Neculce', '1673 Cantemir'] }, { t: 'Târziu', items: ['1777 Golescu', '1849 Cârțan'] }],
       tip: 'Cantemir se naște la un an după Neculce, iar Milescu la trei ani după Costin.' }
   );
 })(typeof window !== 'undefined' ? window : globalThis);

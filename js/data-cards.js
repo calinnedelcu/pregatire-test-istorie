@@ -37,7 +37,7 @@
     { id: 'e26', sec: 'etno-formarea', q: 'Ce rol a avut creștinismul și cum a fost el?', a: 'Factor esențial al **romanizării**; de factură **populară**; de orientare **miceniană** (așa apare în notițe).', src: ['Factor esențial', 'De factură populară', 'De orientare miceniană'] },
     { id: 'e27', sec: 'etno-formarea', q: 'Cine remarcă originea latină a românilor, potrivit notițelor?', a: '**Călători străini** și **cărturarii medievali**.', src: ['Călători străini și cărturarii'] },
 
-    { id: 'e28', sec: 'etno-xiv-xvi', q: 'Ce preocupă pe cărturari în sec. XIV – XVI?', a: '**Argumentarea originii romane**.', src: ['preocupări pt argumentarea'] },
+    { id: 'e28', sec: 'etno-xiv-xvi', q: 'Ce preocupări apar în sec. XIV – XVI?', a: '**Argumentarea originii romane**.', src: ['preocupări pt argumentarea'] },
     { id: 'e29', sec: 'etno-xiv-xvi', q: 'Cum ne spunem noi înșine în sec. XIV – XVI?', a: '**Rumâni**.', src: ['noi ne spunem rumâni'] },
     { id: 'e30', sec: 'etno-xiv-xvi', q: 'Din ce secol se afirmă limba română scrisă?', a: 'Din **sec. XVI**.', src: ['din sec XVI se afirmă'] },
     { id: 'e31', sec: 'etno-xiv-xvi', q: 'N. Olahus: ce idee susține și ce argument aduce?', a: 'Susține ideea **unității neamului, a limbii și religiei**; argument: **originea**.', src: ['Susține ideea unității', 'Argument: originea'] },
@@ -48,11 +48,11 @@
     { id: 'e35', sec: 'etno-xvii', q: 'Cine are, în această listă, „Istoria Țării Românești”?', a: '**C-tin Cantacuzino**.', src: ['C-tin Cantacuzino'] },
     { id: 'e36', sec: 'etno-xvii', q: 'D. Cantemir: ce lucrări apar în listă și ce idee susține?', a: '**Descrierea Moldovei**; **Hronicul româno-moldo-vlahilor**.\nSusține ideea **originii pur romane**.', src: ['Descrierea Moldovei', 'Hronicul româno', 'Susține ideea originii'] },
     { id: 'e37', sec: 'etno-xvii', q: 'Care autor din listă susține ideea originii „pur” romane?', a: '**D. Cantemir**.', src: ['Susține ideea originii'] },
-    { id: 'e38', sec: 'etno-xvii', q: 'Care autor din listă pune accent pe originea neamului?', a: '**M. Costin**.', src: ['Accent pe originea'] },
+    { id: 'e38', sec: 'etno-xvii', q: 'Despre care autor din listă scrie exact „accent pe originea neamului”?', a: '**M. Costin**.', src: ['Accent pe originea'] },
 
     { id: 'e39', sec: 'etno-politica', q: 'Când apar primele semne ale conștiinței naționale?', a: 'La sfârșitul sec. **XVII** și începutul sec. **XVIII**.', src: ['Sf sec XVII'] },
     { id: 'e40', sec: 'etno-politica', q: 'Între cine sunt interese contradictorii în Transilvania?', a: 'Între **români, unguri și austrieci**.', src: ['Interese contradictorii'] },
-    { id: 'e41', sec: 'etno-politica', q: 'Cum sunt priviți românii în Transilvania și cum justifică ungurii acest lucru?', a: 'Românii sunt doar **toleraţi**, ceea ce ungurii justifică prin **Ortodoxia** românilor și prin **întâietatea** lor (a ungurilor) aici.', src: ['Românii sunt doar toleraţi', 'Ortodoxia noastră', 'lor aici'] },
+    { id: 'e41', sec: 'etno-politica', q: 'Cum sunt priviți românii în Transilvania și cum justifică ungurii acest lucru?', a: 'Românii sunt doar **tolerați**, ceea ce ungurii justifică prin **Ortodoxia** românilor și prin **întâietatea** lor (a ungurilor) aici.', src: ['Românii sunt doar tolerați', 'Ortodoxia noastră', 'lor aici'] },
     { id: 'e42', sec: 'etno-politica', q: 'Ce este lupta pentru întâietate?', a: 'Lupta pentru **drepturi politice**.', src: ['Lupta pentru întâietate'] },
     { id: 'e43', sec: 'etno-politica', q: 'Inochentie Micu: cum își argumentează cererile politice?', a: 'Prin **vechimea și continuitatea neamului** ⇒ teoriile ce contestă întâietatea (așa e scris în notițe).', src: ['Inochentie Micu'] },
     { id: 'e44', sec: 'etno-politica', q: 'Școala Ardeleană: ce accent pune?', a: 'Accent pe **originea latină**.', src: ['Școala Ardeleană'] },
@@ -64,11 +64,11 @@
     { id: 'e49', sec: 'etno-roesler', q: 'Ce a contribuit la consolidarea conștiinței naționale (la teoria continuității)?', a: '**Domnia lui A.I. Cuza**.', src: ['Domnia lui'] },
     { id: 'e50', sec: 'etno-roesler', q: 'Ce se întâmplă după 1918 cu disputa și cine scrie lucrări?', a: 'Disputa **continuă** ⇒ alte lucrări: **Iorga, Pârvan, Gh Brătianu**.', src: ['După 1918'] },
 
-    { id: 'e51', sec: 'etno-comunista', q: 'Ce erau Ungaria și România în istoriografia comunistă?', a: '**State satelit ale URSS**.', src: ['Ungaria și România'] },
+    { id: 'e51', sec: 'etno-comunista', q: 'Ce erau Ungaria și România în perioada comunistă?', a: '**State satelit ale URSS**.', src: ['Ungaria și România'] },
     { id: 'e52', sec: 'etno-comunista', q: 'Ce teorii se impun în istoriografia comunistă?', a: '**Teoriile staliniste**.', src: ['Teoriile staliniste'] },
     { id: 'e53', sec: 'etno-comunista', kind: L, q: 'Teoriile staliniste: care sunt cele 2 idei?', items: ['Caracterul imperialist și sclavagist al stăpânirii romane', 'Importanța civilizatoare a slavilor'], src: ['Caracterul imperialist', 'Importanța civilizatoare'] },
     { id: 'e54', sec: 'etno-comunista', q: 'Ce se dorește după 1965?', a: 'Revitalizarea **sentimentului național**.', src: ['După 1965'] },
-    { id: 'e55', sec: 'etno-comunista', kind: L, q: 'După 1965: ce 3 lucruri se întâmplă cu factorii istorici?', items: ['Factorul roman este minimizat și considerat asupritor', 'Accentuată importanța factorului geto – dac', 'Supralicitată valoarea izvoarelor arheologice'], src: ['Factorul roman este minimizat'] },
+    { id: 'e55', sec: 'etno-comunista', kind: L, q: 'După 1965: ce 3 schimbări apar în felul de a privi trecutul?', items: ['Factorul roman este minimizat și considerat asupritor', 'Accentuată importanța factorului geto – dac', 'Supralicitată valoarea izvoarelor arheologice'], src: ['Factorul roman este minimizat'] },
     { id: 'e56', sec: 'etno-comunista', q: 'Ce ar trebui să se întâmple cu disputa politică despre romanitate după aderarea la UE?', a: 'Nu ar mai trebui să aibă **conținut**.', src: ['După aderarea la UE'] },
 
     /* ── Capitolul 2: Călători români acasă și în lume ── */
