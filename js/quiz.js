@@ -421,6 +421,7 @@
     var pool = D.questions.filter(function (q) {
       if (o.game && !q.game) return false;
       if (o.sec && q.sec !== o.sec) return false;
+      if (o.grp && q.grp !== o.grp) return false;
       if (o.chs && o.chs.length && o.chs.indexOf(q.ch) < 0) return false;
       if (o.types && o.types.length && o.types.indexOf(q.t) < 0) return false;
       if (o.ids && o.ids.indexOf(q.id) < 0) return false;
@@ -466,10 +467,10 @@
   Quiz.view = function (params) {
     params = params || {};
     var App = g.App;
-    if (params.run || params.sec || params.ids) {
-      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.lvl || (params.hard ? 3 : 0), n: params.ids ? params.ids.length : (params.n || 10), spread: params.spread });
+    if (params.run || params.sec || params.ids || params.grp) {
+      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.lvl || (params.hard ? 3 : 0), n: params.ids ? params.ids.length : (params.n || 10), spread: params.spread, grp: params.grp });
       if (!qs.length) return h('div.card', h('p', 'Nu există întrebări pentru această selecție.'), h('button.btn', { onClick: function () { App.go('practice'); } }, 'Înapoi'));
-      return Quiz.session({ title: 'Întrebări' + (params.sec ? ' · ' + D.sec[params.sec].title : params.spread && params.chs && params.chs.length === 1 ? ' · ' + D.chById[params.chs[0]].title : ''), questions: U.shuffle(qs), mode: 'practice', again: { route: 'quiz', params: params.ids ? {} : params } });
+      return Quiz.session({ title: (params.grp === 'opere' ? 'Operă ↔ autor' : 'Întrebări') + (params.sec ? ' · ' + D.sec[params.sec].title : params.grp === 'opere' && params.chs && params.chs.length === 1 ? ' · ' + D.chById[params.chs[0]].title : params.spread && params.chs && params.chs.length === 1 ? ' · ' + D.chById[params.chs[0]].title : ''), questions: U.shuffle(qs), mode: 'practice', again: { route: 'quiz', params: params.ids ? {} : params } });
     }
     var sel = {}; D.chapters.forEach(function (c) { sel[c.id] = true; });
     var n = 10, lvl = 0;

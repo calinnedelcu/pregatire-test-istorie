@@ -346,6 +346,13 @@
     return el;
   };
 
+  /* butonul „Test operă ↔ autor”: apare doar la lecțiile care au perechi autor – lucrare */
+  function opereBtn(ch, small) {
+    var n = (D.questions || []).filter(function (q) { return q.ch === ch.id && q.grp === 'opere'; }).length;
+    if (!n) return null;
+    return h('button.btn' + (small ? '.sm' : ''), { onClick: function () { g.App.go('quiz', { run: 1, chs: [ch.id], grp: 'opere', n: n }); } }, U.icon('link', small ? 15 : 16), 'Test operă ↔ autor');
+  }
+
   /* ── pagina Notițe ── */
   Notes.view = function (params) {
     var App = g.App;
@@ -396,6 +403,7 @@
       ch.subtitle ? h('p.sub', ch.subtitle) : null,
       h('div.row', h('span.chip.' + ch.cls, readCount + ' / ' + ch.sections.length + ' secțiuni citite'),
         h('button.btn.primary.sm', { onClick: function () { App.lessonMenu(ch.id); } }, U.icon('zap', 15), 'Exersează lecția'),
+        opereBtn(ch, true),
         ch.photos.length ? photoLink(ch.photos, 'Toate pozele originale') : null)
     ));
     content.appendChild(h('div.card.flat.banner.legend', { style: 'margin-bottom:16px' }, U.icon('info', 20),
@@ -416,7 +424,7 @@
     // secțiuni
     ch.sections.forEach(function (sec) { content.appendChild(renderSection(sec, ch)); });
     content.appendChild(h('div.lesson-end', h('span', 'Ai ajuns la capătul lecției. Verifică ce ai reținut.'),
-      h('button.btn.primary', { onClick: function () { App.lessonMenu(ch.id); } }, U.icon('zap', 16), 'Exersează lecția')));
+      h('div.row', opereBtn(ch, false), h('button.btn.primary', { onClick: function () { App.lessonMenu(ch.id); } }, U.icon('zap', 16), 'Exersează lecția'))));
     root.classList.toggle('recite', recite);
     syncKw();
 
