@@ -137,49 +137,90 @@
   };
 
   /* meniu de exersare pentru o lecție întreagă (capitol) */
+  var EX_TYPES = [['mcq', 'Alegere'], ['tf', 'Adevărat / Fals'], ['multi', 'Selecție multiplă'], ['type', 'Răspuns scris'], ['order', 'Ordonare'], ['match', 'Potrivire'], ['sort', 'Sortare']];
   App.lessonMenu = function (chId) {
     var ch = D.chById[chId];
     var qs = (D.questions || []).filter(function (q) { return q.ch === chId; });
-    var nCards = (D.cards || []).filter(function (c) { return c.ch === chId; }).length;
-    var nCz = (D.cloze || []).filter(function (c) { return c.ch === chId; }).length;
-    var lvl = 0, n = 20, m;
-    function poolSize(l) { return qs.filter(function (q) { return (q.lvl || 1) >= l; }).length; }
-    function item(icon, title, sub, fn, disabled) {
-      return h('button.mode', { disabled: disabled, onClick: function () { m.close(); fn(); }, style: 'width:100%' },
-        h('div.mi', U.icon(icon, 22)), h('b', title), h('span', sub));
+    var cardsAll = (D.cards || []).filter(function (c) { return c.ch === chId; });
+    var clozeAll = (D.cloze || []).filter(function (c) { return c.ch === chId; });
+    var lvl = 0, type = '', sec = '', n = 20, m;
+    // întrebările care se potrivesc filtrelor curente; o mică înlocuire permite să numărăm cum ar ieși dacă am schimba un filtru
+    function pool(o) {
+      o = o || {};
+      var l = o.lvl != null ? o.lvl : lvl, t = o.type != null ? o.type : type, s = o.sec != null ? o.sec : sec;
+      return qs.filter(function (q) { return (q.lvl || 1) >= l && (!t || q.t === t) && (!s || q.sec === s); });
     }
-    // alegerea întrebărilor: dificultate (cu câte sunt în fiecare) și câte întrebări
-    var chipsLvl = h('div.chips-pick'), chipsN = h('div.chips-pick');
+    function chip(label, on, fn) { return h('button' + (on ? '.on' : ''), { type: 'button', onClick: fn }, label); }
+    function tile(icon, title, fn) {
+      var sub = h('span'), el = h('button.mode', { type: 'button', style: 'width:100%', onClick: function () { if (!el.disabled) { m.close(); fn(); } } }, h('div.mi', U.icon(icon, 22)), h('b', title), sub);
+      return { el: el, sub: sub };
+    }
+    var chipsLvl = h('div.chips-pick'), chipsType = h('div.chips-pick'), chipsN = h('div.chips-pick');
+    var secSel = h('select', { 'aria-label': 'Secțiune' });
+    secSel.addEventListener('change', function () { sec = secSel.value; draw(); });
+    var cardsT = tile('layers', 'Carduri', function () { App.go('cards', sec ? { run: 1, sec: sec, mode: 'smart' } : { run: 1, ch: chId, mode: 'smart' }); });
+    var clozeT = tile('pencil', 'Completează din notițe', function () { App.go('cloze', sec ? { sec: sec } : { ch: chId }); });
+    var recallT = tile('pencil', 'Scrie din memorie', function () { App.go('recall', { sec: sec }); });
     function draw() {
-      U.clear(chipsLvl); U.clear(chipsN);
+      // dacă filtrele alese nu mai lasă nicio întrebare, se renunță la ele, pe rând
+      if (!pool().length && type) type = '';
+      if (!pool().length && sec) sec = '';
+      if (!pool().length && lvl) lvl = 0;
+      U.clear(chipsLvl); U.clear(chipsType); U.clear(chipsN); U.clear(secSel);
       [[0, 'Toate'], [3, 'Grele'], [4, 'Foarte grele']].forEach(function (x) {
-        var c = poolSize(x[0]);
-        if (x[0] && !c) return;
-        chipsLvl.appendChild(h('button' + (lvl === x[0] ? '.on' : ''), { onClick: function () { lvl = x[0]; draw(); } }, x[1] + ' (' + c + ')'));
+        var c = pool({ lvl: x[0] }).length;
+        if (x[0] && !c && lvl !== x[0]) return;
+        chipsLvl.appendChild(chip(x[1] + ' (' + c + ')', lvl === x[0], function () { lvl = x[0]; draw(); }));
       });
-      var np = poolSize(lvl), sizes = [10, 20, 30].filter(function (k) { return k < np; }).concat([np]);
+      chipsType.appendChild(chip('Toate (' + pool({ type: '' }).length + ')', !type, function () { type = ''; draw(); }));
+      EX_TYPES.forEach(function (x) {
+        var c = pool({ type: x[0] }).length;
+        if (!c && type !== x[0]) return;
+        chipsType.appendChild(chip(x[1] + ' (' + c + ')', type === x[0], function () { type = x[0]; draw(); }));
+      });
+      secSel.appendChild(h('option', { value: '' }, 'Toată lecția (' + pool({ sec: '' }).length + ')'));
+      ch.sections.forEach(function (sc) {
+        var c = pool({ sec: sc.id }).length;
+        var o = h('option', { value: sc.id }, sc.title + ' (' + c + ')');
+        if (!c) o.disabled = true;
+        secSel.appendChild(o);
+      });
+      secSel.value = sec;
+      var np = pool().length, sizes = [10, 20, 30].filter(function (k) { return k < np; }).concat([np]);
       if (sizes.indexOf(n) < 0) n = sizes.indexOf(20) >= 0 ? 20 : sizes[sizes.length - 1];
-      sizes.forEach(function (k) {
-        chipsN.appendChild(h('button' + (n === k ? '.on' : ''), { onClick: function () { n = k; draw(); } }, k === np ? 'Toate (' + np + ')' : String(k)));
-      });
+      sizes.forEach(function (k) { chipsN.appendChild(chip(k === np ? 'Toate (' + np + ')' : String(k), n === k, function () { n = k; draw(); })); });
+      startBtn.disabled = !np;
+      var nc = sec ? cardsAll.filter(function (c) { return c.sec === sec; }).length : cardsAll.length;
+      var nz = sec ? clozeAll.filter(function (c) { return c.sec === sec; }).length : clozeAll.length;
+      cardsT.sub.textContent = nc ? U.nr(nc, 'card', 'carduri') + (sec ? ' din secțiunea aleasă' : ' din lecție') + '; cele scadente vin primele' : 'Nu există carduri';
+      cardsT.el.disabled = !nc;
+      clozeT.sub.textContent = nz ? U.nr(nz, 'propoziție', 'propoziții') + ' cu spații goale' + (sec ? ' din secțiunea aleasă' : ' din lecție') : 'Nu există completări';
+      clozeT.el.disabled = !nz;
+      recallT.sub.textContent = sec ? 'Scrii tot ce știi despre secțiunea aleasă, apoi compari cu notițele' : 'Alege mai sus o secțiune ca să scrii despre ea';
+      recallT.el.disabled = !sec;
     }
-    draw();
+    function start() {
+      m.close();
+      var p = { run: 1, chs: [chId], n: n, lvl: lvl };
+      if (sec) p.sec = sec; else p.spread = 1;
+      if (type) p.types = [type];
+      App.go('quiz', p);
+    }
+    var startBtn = h('button.btn.primary', { onClick: start }, U.icon('target', 16), 'Începe întrebările');
     var main = qs.length
       ? h('div.lesson-q',
-          h('div.mi', U.icon('target', 22)), h('b', 'Întrebări din toată lecția'),
-          h('span', 'Câte puțin din fiecare secțiune, amestecate. Cele greșite sau nevăzute vin primele.'),
+          h('div.mi', U.icon('target', 22)), h('b', 'Întrebări'),
+          h('span', 'Alege ce vrei să exersezi. Fără alegeri, primești câte puțin din fiecare secțiune, amestecat.'),
+          h('div.field', h('span.lab', 'Secțiune'), secSel),
+          h('div.field', h('span.lab', 'Tip de exercițiu'), chipsType),
           h('div.field', h('span.lab', 'Dificultate'), chipsLvl),
           h('div.field', h('span.lab', 'Câte întrebări'), chipsN),
-          h('button.btn.primary', { onClick: function () { m.close(); App.go('quiz', { run: 1, chs: [chId], n: n, spread: 1, lvl: lvl }); } }, U.icon('target', 16), 'Începe întrebările'))
+          startBtn)
       : h('p.muted', 'Nu există întrebări pentru această lecție.');
+    draw();
     m = App.modal({
       title: 'Exersează lecția',
-      body: h('div.stack',
-        h('p.muted', ch.title),
-        main,
-        item('layers', 'Carduri din lecție', nCards ? U.nr(nCards, 'card', 'carduri') + '; cele scadente vin primele' : 'Nu există carduri', function () { App.go('cards', { run: 1, ch: chId, mode: 'smart' }); }, !nCards),
-        item('pencil', 'Completează din notițe', nCz ? U.nr(nCz, 'propoziție', 'propoziții') + ' cu spații goale din lecție' : 'Nu există completări', function () { App.go('cloze', { ch: chId }); }, !nCz)
-      )
+      body: h('div.stack', h('p.muted', ch.title), main, cardsT.el, clozeT.el, recallT.el)
     });
   };
 

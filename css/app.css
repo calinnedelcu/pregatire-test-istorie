@@ -440,6 +440,8 @@ table.src td.empty .v { color: var(--ink-3); font-style: italic; }
 .lesson-q b { font-size: 18px; }
 .lesson-q > span { color: var(--ink-2); font-size: 14.5px; }
 .lesson-q .btn { justify-self: start; }
+.lesson-q select { width: 100%; min-height: 40px; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+.field > select { justify-self: stretch; }
 .mode:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
 .mode .mi { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
 .mode b { font-size: 18px; }
