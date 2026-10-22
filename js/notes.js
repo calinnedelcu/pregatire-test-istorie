@@ -6,7 +6,7 @@
   var Notes = (g.Notes = {});
   Notes.tab = { etno: 'Etnogeneza românească', calatori: 'Călători români', descoperiri: 'Marile descoperiri' };
 
-  var TOKEN_SRC = '\\*\\*([\\s\\S]+?)\\*\\*|\\{\\{([^|{}]+)\\|([^{}]+)\\}\\}|\\{\\?([^|{}]+)\\|([^{}]+)\\}|\\{gol\\}|\\{c:([0-9, ]+)\\}';
+  var TOKEN_SRC = '\\*\\*([\\s\\S]+?)\\*\\*|\\{\\{([^|{}]+)\\|([^{}]+)\\}\\}|\\{\\?([^|{}]+)\\|([^{}]+)\\}|\\{gol\\}|\\{c:([0-9, ]+)\\}|\\{\\+([^|{}]+)\\|([^{}]+)\\}';
 
   /* ── text fără marcaje ── */
   function strip(t) {
@@ -14,6 +14,7 @@
       .replace(/\*\*/g, '')
       .replace(/\{\{([^|{}]+)\|([^{}]+)\}\}/g, '$1')
       .replace(/\{\?([^|{}]+)\|([^{}]+)\}/g, '$1')
+      .replace(/\{\+([^|{}]+)\|([^{}]+)\}/g, '$1')
       .replace(/\{gol\}/g, '')
       .replace(/\{c:[0-9, ]+\}/g, '')
       .replace(/\s+/g, ' ')
@@ -36,6 +37,7 @@
       if (m[1] != null) out.push({ t: 'key', v: strip(m[1]), i: ki++ });
       else if (m[2] != null) pushText(m[2]);
       else if (m[4] != null) pushText(m[4]);
+      else if (m[7] != null) pushText(m[7]);
       last = re.lastIndex;
     }
     pushText(text.slice(last));
@@ -140,6 +142,10 @@
         frag.appendChild(fx);
       } else if (m[4] != null) {
         frag.appendChild(h('span.unsure', { title: 'Citire nesigură în scrisul de mână. ' + m[5], tabindex: '0' }, m[4], h('sup', '?')));
+      } else if (m[7] != null) {
+        // {+text|explicație} = completat de pe net, unde în notițe lipsea sau era tăiat ceva
+        var addWhy = m[8].replace(/^completat de pe net:?\s*/i, ''), addTxt = 'completat de pe net' + (addWhy ? ': ' + addWhy : '');
+        frag.appendChild(h('span.fix.add', { title: addTxt, tabindex: '0', role: 'button', 'aria-label': addTxt }, m[7], h('span.was', ' (' + addTxt + ')')));
       } else if (m[6] != null) {
         var nums = m[6].replace(/\s/g, '').split(',').filter(Boolean);
         frag.appendChild(h('span.src-tag', { title: 'Apare în ' + (nums.length > 1 ? 'caietele ' : 'caietul ') + nums.join(', ') }, 'caiet ' + nums.join(', ')));
@@ -165,6 +171,7 @@
           if (m[1] != null) scan(m[1]); // marcajele din interiorul unui cuvânt-cheie
           else if (m[2] != null) fixes.push(m[3].charAt(0) === '~' ? '„' + m[2] + '” – ' + m[3].slice(1).trim() + ' (citit din context)' : '„' + m[3] + '” → „' + m[2] + '” (greșeală de tipar corectată)');
           else if (m[4] != null) unsure.push('„' + m[4] + '” – ' + m[5]);
+          else if (m[7] != null) fixes.push('„' + m[7] + '” – completat de pe net' + (m[8].replace(/^completat de pe net:?\s*/i, '') ? ' (' + m[8].replace(/^completat de pe net:?\s*/i, '') + ')' : ''));
           else if (m[0] === '{gol}') blanks.push('După „' + n.plain + '” nu e scris nimic în notițe.');
         }
       })(n.text);
@@ -263,8 +270,11 @@
         var vals = [String(r.n), r.sec, r.autor, r.lucrare, r.mentiune];
         return h('tr', vals.map(function (v, i) {
           var cls = i === 0 ? 'n' : i === 1 ? 'c' : '';
-          var empty = (v === '' || v == null);
-          var content = empty ? h('span.v', '(gol în notițe)') : h('span.v', v);
+          var net = (v === '' || v == null) && i === 3 && r.lucrareNet; // celulă goală în notițe, completată de pe net
+          var empty = (v === '' || v == null) && !net;
+          var content = net
+            ? h('span.v', h('span.fix.add', { title: 'Completat de pe net: ' + r.lucrareNet.why, tabindex: '0', role: 'button' }, r.lucrareNet.text, h('span.was', ' (completat de pe net: ' + r.lucrareNet.why + ')')))
+            : empty ? h('span.v', '(gol în notițe)') : h('span.v', v);
           if (hiddenCols[i] && !empty) {
             var td = h('td.hide', { class: cls, tabindex: '0', role: 'button', 'aria-label': 'Arată celula ascunsă', onClick: function () { td.classList.toggle('on'); } }, content);
             td.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); td.classList.toggle('on'); } });
@@ -364,7 +374,8 @@
       h('p', 'Textul de mai jos e preluat din notițele tale, rând cu rând. ',
         h('span.kw', 'Galbenul'), ' marchează cuvintele-cheie; ',
         h('span.fix', 'liniuța punctată'), ' arată o greșeală de tipar corectată sau un loc citit din context (atinge-o ca să vezi explicația); ',
-        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. Pozele originale le deschizi cu butonul de mai sus. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
+        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit; ',
+        h('span.fix.add', 'fundalul verde'), ' arată ce am completat de pe net, acolo unde în notițe lipsea sau era tăiat ceva (atinge-l ca să vezi explicația). Pozele originale le deschizi cu butonul de mai sus. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
 
     var toc = h('div.toc', { role: 'navigation', 'aria-label': 'Secțiunile capitolului' }, ch.sections.map(function (sec, i) {
       return h('button.chip' + (g.Store.data.read[sec.id] ? '.ok' : ''), { title: sec.title, onClick: function () {

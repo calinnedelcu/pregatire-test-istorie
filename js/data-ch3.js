@@ -19,8 +19,7 @@
 - **Nevoia de aur**
 - **Centralizarea statală**
 - **Expansiunea teritorială** {c:1,3}
-  - Expansiunea teritorială (dorința… {c:2}
-  > Caietul 2: după „teritorială” e o paranteză deschisă, „(dorința”, iar rândul se oprește la marginea paginii.
+  - Expansiunea teritorială (dorința {+de a-și extinde teritoriul și puterea|completat de pe net: în caietul 2 rândul se oprește la „(dorința”; continuarea e dedusă din sens}) {c:2}
 - **Dezvoltarea economică**
   > Caietul 1: o săgeată curbă, cu vârf la ambele capete, leagă „centralizarea statală”, „expansiunea teritorială” și „dezvoltarea economică” (începe chiar sub „nevoia de aur”).
 - **Răspândirea creștinismului**
@@ -37,7 +36,7 @@
 > În caiete, cuvântul „Consecințe” e tăiat, iar titlul rămas e „Descoperitori și descoperiri”; sub el e lista consecințelor.
 - Începe **comerțul cu sclavi**
 - Mor mulți **amerindieni** {c:2}
-  - **90%** din amerindieni mor de la **boli** / {?exterminări|în caietul 3 se citește „extermin…”, probabil „exterminări” (sau „exterminare”, „exterminați”); sfârșitul cuvântului e tăiat de marginea paginii}… {c:3}
+  - **90%** din amerindieni mor de la **boli** / {{exterminări|~în caietul 3 cuvântul e tăiat de marginea paginii și se citește „extermin…”; sensul („mor de boli / exterminări”) cere „exterminări”}} {c:3}
   - răspândite **boli** {c:1}
 - Apar **imperii coloniale**
 - **Centrul de greutate** al comerțului se mută din **Mediterană** în **Atlantic**
@@ -58,7 +57,8 @@
 - **Henric Navigatorul** – rege al **Portugaliei**
   ?> În caiete scrie „rege al Portugaliei”. Istoric, Henric Navigatorul (1394 – 1460) n-a fost rege, ci prinț (infante), fiul regelui Ioan I al Portugaliei. Pentru test, ține minte formularea din caiet.
   - a sprijinit **coasta Africii** {c:1}
-    > Caietul 3 scrie „a sprijinit dezv.” și, pe linia următoare, „Vefrică”, adică probabil „Vest Africă”. Se potrivește cu istoria: Henric a finanțat expedițiile de-a lungul coastei de vest a Africii. Caietul 2 se oprește la „care a sprijinit”, fără continuare.
+  - a sprijinit dezv. **{{Vest Africă|~în caietul 3 cuvântul e scris pe rândul următor, „Vefrică”}}** {c:3}
+  - a sprijinit **{+explorarea coastei de vest a Africii|completat de pe net: caietul 2 se oprește la „care a sprijinit”; Henric a finanțat expedițiile de-a lungul coastei de vest a Africii}** {c:2}
 - **1488** – **{{Bartolomeu|Bartolomeo}} Diaz** – **Capul Bunei Speranțe** {c:2,3}
 - **1498** – **Vasco da Gama** – **India** {c:1,3}
   - caietul 2 scrie **1497** pentru Vasco da Gama – India
@@ -68,14 +68,15 @@
 - **1492** – **Columb** – **America** {c:1,2}
 - **1519 – 1522** – **Magellan** – **înconjurul lumii**
 - **Amerigo Vespucci** – **numele Americii** {c:1}
+  - {+1507: harta lui Martin Waldseemüller dă noului continent numele „America”, după prenumele lui Amerigo Vespucci|completat de pe net: în caietul 2 data e scrisă doar „15…”}
   - își dă seama că {{s-a descoperit|~în caietul 3 verbul se citește greu; sensul cere „s-a descoperit” (altă variantă: „se descoperă”)}} **un nou continent** {c:3}
-  > În caietul 2, la Vespucci data e scrisă doar „15…”, fără restul anului.
+    - {+1501 – 1502: în această călătorie conchide că ținuturile descoperite nu sunt Asia, ci un continent nou|completat de pe net: anul nu apare în notițe}
 - **Papa** împarte lumea în 2 în **1494** – **Tratatul de la {{Tordesillas|Tortesilas}}**
 @embed desc-strip
 
 ## desc-romani | Români | 11
 - Spătarul **Nicolae Milescu** – **China**
 - **Badea Cârțan** – merge la **Roma**
-- Dimitrie Cantemir – {gol}
+- Dimitrie Cantemir – {+Constantinopol (Istanbul), la Curtea otomană|completat de pe net: în caiet rândul rămăsese gol; Cantemir a trăit ani la Constantinopol, de unde „Creșterea și descreșterea Curții otomane”}
 `);
 })(typeof window !== 'undefined' ? window : globalThis);

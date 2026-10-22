@@ -356,6 +356,8 @@ main#view { max-width: 920px; margin: 0 auto; padding: 22px 0 calc(var(--tabbar-
 .fix { border-bottom: 2px dotted var(--accent); cursor: help; }
 .fix .was { display: none; }
 .fix.open .was { display: inline; font-size: 0.82em; color: var(--ink-2); font-family: var(--f-ui); background: var(--accent-soft); border-radius: 6px; padding: 0 6px; margin-left: 4px; }
+.fix.add { background: var(--ok-soft); border-bottom: 2px dashed var(--ok); border-radius: 3px; padding: 0 2px; }
+.fix.add.open .was { background: var(--ok-soft); }
 .unsure { background: var(--warn-soft); border-bottom: 2px dotted var(--warn); cursor: help; border-radius: 3px; padding: 0 2px; }
 .unsure sup { font-size: 0.65em; color: var(--warn); font-family: var(--f-ui); font-weight: 800; margin-left: 1px; }
 .blank { display: inline-block; font-family: var(--f-ui); font-size: 12.5px; font-style: italic; color: var(--ink-3); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 0 8px; margin-left: 4px; vertical-align: 1px; }

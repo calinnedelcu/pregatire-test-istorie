@@ -5,7 +5,7 @@
   D.mnemonics = D.mnemonics || [];
 
   D.timeline.push(
-    { y: 'sec. I îHr – I dHr', k: -50, t: 'Prima etapă din formarea limbii române', n: 'În notițe nu e scris nimic după această perioadă.', ch: 'etno' },
+    { y: 'sec. I îHr – I dHr', k: -50, t: 'Prima etapă din formarea limbii române', n: 'Completat de pe net: contacte între daci și romani (comerț, politică, războaie), înainte de cucerirea Daciei.', ch: 'etno' },
     { y: '106 – 271', k: 106, t: 'Impusă Latina', ch: 'etno' },
     { y: 'sec. II – III', k: 200, t: 'Romanizare cu intensitate mare, la sat și la oraș', ch: 'etno' },
     { y: '271 – 602', k: 271, t: 'Continuarea romanizării', ch: 'etno' },

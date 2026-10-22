@@ -12,7 +12,7 @@
       { n: 4, sec: 'X', autor: 'Constantin al VII-lea Porfirogenetul', lucrare: 'Despre administrarea imperiului', mentiune: 'Romani' },
       { n: 5, sec: 'XI', autor: 'Kekaumenos', lucrare: 'Sfaturi și povestiri', mentiune: 'Vlahii sud-dunăreni' },
       { n: 6, sec: 'XI', autor: 'Gardizi', lucrare: 'Podoaba istoriilor', mentiune: 'Așezare între Dunăre și un munte mare' },
-      { n: 7, sec: 'XII', autor: 'Ioan Kynamos', lucrare: '', mentiune: 'Vlahi' },
+      { n: 7, sec: 'XII', autor: 'Ioan Kynamos', lucrare: '', lucrareNet: { text: 'Epitome', why: 'în tabel celula „lucrarea” rămăsese goală; Kynamos a scris „Epitome”, continuarea Alexiadei, despre domniile lui Ioan II și Manuel I Comnen' }, mentiune: 'Vlahi' },
       { n: 8, sec: 'XII', autor: 'Anonymus', lucrare: 'Cronică', mentiune: 'Popoare din Transilvania prezentate' },
       { n: 9, sec: 'XIII', autor: 'Ioniță cel Frumos', lucrare: 'Corespondență cu papa', mentiune: 'Originea etnică și mândria' },
       { n: 10, sec: 'XIII', autor: 'Simon de Keza', lucrare: 'Cronică', mentiune: 'Păstorii romanilor' }

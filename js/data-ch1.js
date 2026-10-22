@@ -30,7 +30,7 @@
 
 ## etno-formarea | Formarea limbii române | 1,2
 - Etape
-  - Sec **I îHr – I dHr** {gol}
+  - Sec **I îHr – I dHr** – {+contacte între daci și romani (comerț, politică, războaie), înainte de cucerirea Daciei|completat de pe net: în notițe rândul rămăsese gol}
   - **106 – 271** – impusă **Latina**
   - **271 – 602** – continuarea **romanizării**
   - **602** - **slavii** trec **Dunărea** în S
@@ -95,9 +95,10 @@
 
 ## etno-roesler | Teoria lui Roesler | 4
 - Teorie **imigraționistă**
+  - {+formulată de Robert Roesler în 1871: românii s-ar fi format la sud de Dunăre și ar fi migrat spre nord abia în evul mediu (secolele XIII – XIV)|completat de pe net: sub „Teorie imigraționistă” nu era scris nimic}
 - Teoria **continuității**
-  - Susținători {gol}
-  - Conținut {gol}
+  - Susținători: {+cronicarii, Școala Ardeleană, A. D. Xenopol, N. Iorga (după 1918 și Pârvan, Gh. Brătianu)|completat de pe net: rândul „Susținători” era gol}
+  - Conținut: {+poporul și limba română s-au format pe un teritoriu romanizat la N și S de Dunăre; populația daco-romană a rămas în Dacia și după retragerea aureliană (271 – 275)|completat de pe net: rândul „Conținut” era gol}
   - Domnia lui {{A.I. Cuza|AICuza}} a contribuit la **consolidarea conștiinței naționale**
   - După **1918** disputa continuă => alte lucrări: **Iorga**, **Pârvan**, **Gh Brătianu**
 

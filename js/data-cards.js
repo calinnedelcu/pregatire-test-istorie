@@ -20,7 +20,7 @@
     { id: 'e10', sec: 'etno-romanizarea', q: 'Ce ne-a dat stratul latin?', a: '**Gramatica** și **majoritatea cuvintelor**.', src: ['Strat latin'] },
     { id: 'e11', sec: 'etno-romanizarea', q: 'Ce ne-a dat adstratul slav?', a: '**Fonetică** și **vocabular**.', src: ['Adstrat slav'] },
 
-    { id: 'e12', sec: 'etno-formarea', kind: L, q: 'Etapele formării limbii române (4 repere de timp)', items: ['Sec I îHr – I dHr', '106 – 271 – impusă Latina', '271 – 602 – continuarea romanizării', '602 – slavii trec Dunărea în S'], src: ['106 – 271'] },
+    { id: 'e12', sec: 'etno-formarea', kind: L, q: 'Etapele formării limbii române (4 repere de timp)', items: ['Sec I îHr – I dHr – contacte între daci și romani (completat de pe net)', '106 – 271 – impusă Latina', '271 – 602 – continuarea romanizării', '602 – slavii trec Dunărea în S'], src: ['106 – 271'] },
     { id: 'e13', sec: 'etno-formarea', q: 'Ce se întâmplă între 106 și 271?', a: 'Este **impusă Latina**.', src: ['106 – 271'] },
     { id: 'e14', sec: 'etno-formarea', q: 'Ce se întâmplă între 271 și 602?', a: '**Continuarea romanizării**.', src: ['271 – 602'] },
     { id: 'e15', sec: 'etno-formarea', q: 'Ce se întâmplă în 602 și ce urmări are?', a: '**Slavii trec Dunărea în S**.\nUrmări: fragmentarea comunităților locale, despărțirea de romanitatea nord-dunăreană.', src: ['602 - slavii', 'Fragmentarea comunităților'] },
@@ -70,6 +70,12 @@
     { id: 'e54', sec: 'etno-comunista', q: 'Ce se dorește după 1965?', a: 'Revitalizarea **sentimentului național**.', src: ['După 1965'] },
     { id: 'e55', sec: 'etno-comunista', kind: L, q: 'După 1965: ce 3 schimbări apar în felul de a privi trecutul?', items: ['Factorul roman este minimizat și considerat asupritor', 'Accentuată importanța factorului geto – dac', 'Supralicitată valoarea izvoarelor arheologice'], src: ['Factorul roman este minimizat'] },
     { id: 'e56', sec: 'etno-comunista', q: 'Ce ar trebui să se întâmple cu disputa politică despre romanitate după aderarea la UE?', a: 'Nu ar mai trebui să aibă **conținut**.', src: ['După aderarea la UE'] },
+
+    { id: 'e57', sec: 'etno-roesler', q: 'Ce susține teoria imigraționistă, formulată de Robert Roesler în 1871? (rând gol în notițe; completat de pe net)', a: 'Că românii s-au format la **sud de Dunăre** și au migrat spre nord abia în **evul mediu** (secolele XIII – XIV).', src: ['formulată de Robert Roesler'] },
+    { id: 'e58', sec: 'etno-roesler', q: 'Teoria continuității: cine o susține? (rând gol în notițe; completat de pe net)', a: '**Cronicarii**, **Școala Ardeleană**, **A. D. Xenopol**, **N. Iorga**; după 1918 și **Pârvan**, **Gh. Brătianu**.', src: ['Susținători'] },
+    { id: 'e59', sec: 'etno-roesler', q: 'Teoria continuității: ce spune? (rând gol în notițe; completat de pe net)', a: 'Poporul și limba română s-au format pe un teritoriu romanizat la **N și S de Dunăre**; **daco-romanii au rămas** în Dacia și după retragerea aureliană (271 – 275).', src: ['Conținut'] },
+    { id: 'e60', sec: 'etno-formarea', q: 'Ce se petrece în etapa sec. I îHr – I dHr a formării limbii? (rând gol în notițe; completat de pe net)', a: '**Contacte între daci și romani** (comerț, politică, războaie), înainte de cucerirea Daciei.', src: ['Sec I îHr'] },
+    { id: 'e61', sec: 'etno-formarea', q: 'Ioan Kynamos (sec. XII): care e lucrarea? (celulă goală în tabel; completat de pe net)', a: '**Epitome**, continuarea Alexiadei; menționează **vlahi**.', src: ['Călători străini'] },
 
     /* ── Capitolul 2: Călători români acasă și în lume ── */
     { id: 'c01', sec: 'cal-peregrini', q: 'Când apar primii peregrini și cronicari?', a: 'În **sec. XVI**.', src: ['Primii – sec'] },
