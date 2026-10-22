@@ -179,6 +179,22 @@
     return { fixes: fixes, unsure: unsure, blanks: blanks };
   }
 
+  /* comentariile (note, avertizări) stau ascunse în spatele unui buton „i”; se deschid la atingere */
+  function calloutBox(k, attrs) {
+    attrs = attrs || {};
+    attrs.hidden = true;
+    return h('div.callout.' + (k.kind === 'warn' ? 'warn' : 'note'), attrs, U.icon(k.kind === 'warn' ? 'alert' : 'info', 16), h('span', inline(k.text)));
+  }
+  function noteToggle(boxes, warn, label) {
+    var btn = h('button.note-i' + (warn ? '.warn' : ''), { type: 'button', 'aria-expanded': 'false', 'aria-label': label || 'Arată comentariul', title: label || 'Comentariu' }, label ? [U.icon(warn ? 'alert' : 'info', 15), label] : U.icon(warn ? 'alert' : 'info', 15));
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      boxes.forEach(function (b) { b.hidden = !open; });
+    });
+    return btn;
+  }
+
   /* ── arbore ── */
   function renderKids(kids, depth) {
     var sub = kids.filter(function (k) { return k.kind === 'li' || k.kind === 'group'; });
@@ -187,21 +203,27 @@
   }
   function renderNode(n) {
     var li = h('li.node.' + n.kind + (n.em ? '.em' : ''), { dataset: { id: n.id } });
-    li.appendChild(h('span.txt', h('span.tx', inline(n.text))));
+    var txt = h('span.txt', h('span.tx', inline(n.text)));
+    li.appendChild(txt);
+    var boxes = [];
     n.kids.forEach(function (k) {
       if (k.kind === 'note' || k.kind === 'warn') {
-        li.appendChild(h('div.callout.' + (k.kind === 'warn' ? 'warn' : 'note'), U.icon(k.kind === 'warn' ? 'alert' : 'info', 16), h('span', inline(k.text))));
+        boxes.push(calloutBox(k, {}));
       } else if (k.kind === 'embed') {
         var el = Notes.embed(k.name);
         if (el) li.appendChild(h('div.embed', el));
       }
     });
+    if (boxes.length) {
+      txt.appendChild(noteToggle(boxes, n.kids.some(function (k) { return k.kind === 'warn'; })));
+      boxes.forEach(function (b) { li.appendChild(b); });
+    }
     var ul = renderKids(n.kids, n.depth + 1);
     if (ul) li.appendChild(ul);
     return li;
   }
   function renderBody(sec) {
-    var wrap = h('div'), cur = null;
+    var wrap = h('div'), cur = null, topBoxes = null, topBar = null;
     sec.body.forEach(function (k) {
       if (k.kind === 'li' || k.kind === 'group') {
         if (!cur) { cur = h('ul.tree'); wrap.appendChild(cur); }
@@ -210,7 +232,11 @@
       }
       cur = null;
       if (k.kind === 'note' || k.kind === 'warn') {
-        wrap.appendChild(h('div.callout.' + (k.kind === 'warn' ? 'warn' : 'note'), { style: 'margin:4px 0 10px' }, U.icon(k.kind === 'warn' ? 'alert' : 'info', 16), h('span', inline(k.text))));
+        if (!topBoxes) { topBoxes = []; topBar = h('div.note-bar'); wrap.appendChild(topBar); }
+        var tb = calloutBox(k, { style: 'margin:4px 0 10px' });
+        topBoxes.push(tb);
+        wrap.appendChild(tb);
+        topBar.replaceChildren(noteToggle(topBoxes, false, 'Note despre pagină (' + topBoxes.length + ')'));
       } else if (k.kind === 'embed') {
         var el = Notes.embed(k.name);
         if (el) wrap.appendChild(h('div.embed', { style: 'margin:8px 0' }, el));
