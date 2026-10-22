@@ -6,7 +6,7 @@
   var Quiz = (g.Quiz = {});
 
   var TYPE_LABEL = { mcq: 'alegere', tf: 'adevărat / fals', multi: 'alegeri multiple', type: 'răspuns scris', order: 'ordonare', match: 'potrivire', sort: 'sortare', list: 'enumerare' };
-  var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+  var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
   /* ── construire ── */
   Quiz.build = function () {
@@ -313,7 +313,7 @@
       prog.style.width = Math.round(100 * idx / qs.length) + '%';
       U.clear(host); U.clear(foot);
       ctl = R[cur.t](cur);
-      var meta = h('div.qmeta', chipFor(cur.ch), h('span.chip', TYPE_LABEL[cur.t] || cur.t), cur.lvl === 3 ? h('span.chip.warn', 'grea') : null);
+      var meta = h('div.qmeta', chipFor(cur.ch), h('span.chip', TYPE_LABEL[cur.t] || cur.t), cur.lvl === 3 ? h('span.chip.warn', 'grea') : cur.lvl >= 4 ? h('span.chip.bad', 'foarte grea') : null);
       host.appendChild(h('div.card.qcard', meta, h('div.qtext', Notes.inline(cur.q)), ctl.el));
       var btn = h('button.btn.primary.lg', { disabled: !ctl.ready(), onClick: submit }, exam ? (idx + 1 < qs.length ? 'Răspunde și continuă' : 'Răspunde și termină') : 'Verifică', ' ', h('kbd', 'Enter'));
       ctl.onChange(function () { btn.disabled = !ctl.ready(); });
@@ -467,26 +467,26 @@
     params = params || {};
     var App = g.App;
     if (params.run || params.sec || params.ids) {
-      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.hard ? 3 : 0, n: params.ids ? params.ids.length : (params.n || 10), spread: params.spread });
+      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.lvl || (params.hard ? 3 : 0), n: params.ids ? params.ids.length : (params.n || 10), spread: params.spread });
       if (!qs.length) return h('div.card', h('p', 'Nu există întrebări pentru această selecție.'), h('button.btn', { onClick: function () { App.go('practice'); } }, 'Înapoi'));
       return Quiz.session({ title: 'Întrebări' + (params.sec ? ' · ' + D.sec[params.sec].title : params.spread && params.chs && params.chs.length === 1 ? ' · ' + D.chById[params.chs[0]].title : ''), questions: U.shuffle(qs), mode: 'practice', again: { route: 'quiz', params: params.ids ? {} : params } });
     }
     var sel = {}; D.chapters.forEach(function (c) { sel[c.id] = true; });
-    var n = 10, hard = false;
+    var n = 10, lvl = 0;
     var chipsCh = h('div.chips-pick'), chipsN = h('div.chips-pick'), chipsLvl = h('div.chips-pick'), info = h('p.muted');
-    function pool() { return D.questions.filter(function (q) { return sel[q.ch] && (!hard || (q.lvl || 1) >= 3); }); }
+    function pool() { return D.questions.filter(function (q) { return sel[q.ch] && (q.lvl || 1) >= lvl; }); }
     function draw() {
       U.clear(chipsCh); U.clear(chipsN); U.clear(chipsLvl);
-      [[false, 'Toate'], [true, 'Doar cele grele']].forEach(function (x) { chipsLvl.appendChild(h('button' + (hard === x[0] ? '.on' : ''), { onClick: function () { hard = x[0]; draw(); } }, x[1])); });
+      [[0, 'Toate'], [3, 'Grele'], [4, 'Foarte grele']].forEach(function (x) { chipsLvl.appendChild(h('button' + (lvl === x[0] ? '.on' : ''), { onClick: function () { lvl = x[0]; draw(); } }, x[1])); });
       D.chapters.forEach(function (c) { chipsCh.appendChild(h('button' + (sel[c.id] ? '.on' : ''), { onClick: function () { sel[c.id] = !sel[c.id]; draw(); } }, Notes.short(c.id))); });
       [5, 10, 20].forEach(function (k) { chipsN.appendChild(h('button' + (n === k ? '.on' : ''), { onClick: function () { n = k; draw(); } }, k + ' întrebări')); });
-      info.textContent = pool().length + ' întrebări disponibile în selecție. Cele greșite înainte apar mai des.' + (hard ? ' Cele grele au afirmații apropiate, din care una singură e corectă.' : '');
+      info.textContent = pool().length + ' întrebări disponibile în selecție. Cele greșite înainte apar mai des.' + (lvl === 3 ? ' Cele grele au afirmații apropiate, din care una singură e corectă.' : lvl === 4 ? ' Cele foarte grele leagă mai multe informații din notițe și cer să deosebești detalii apropiate.' : '');
     }
     draw();
     return h('div.stack',
       h('div.page-head', h('div', h('h1', 'Întrebări'), h('p', 'Alegi răspunsul, primești explicația și rândul din notițe. Tipuri: alegere, adevărat/fals, alegeri multiple, răspuns scris, ordonare, potrivire.'))),
       h('div.card.opts-card', h('div.field', h('span.lab', 'Capitole'), chipsCh), h('div.field', h('span.lab', 'Câte întrebări'), chipsN), h('div.field', h('span.lab', 'Dificultate'), chipsLvl), info,
-        h('button.btn.primary.lg', { onClick: function () { App.go('quiz', { run: 1, chs: Object.keys(sel).filter(function (k) { return sel[k]; }), n: n, hard: hard }); } }, 'Începe')),
+        h('button.btn.primary.lg', { onClick: function () { App.go('quiz', { run: 1, chs: Object.keys(sel).filter(function (k) { return sel[k]; }), n: n, lvl: lvl }); } }, 'Începe')),
       h('button.btn.ghost', { onClick: function () { App.go('practice'); } }, U.icon('left', 16), 'Înapoi la Exersează'));
   };
 })(typeof window !== 'undefined' ? window : globalThis);

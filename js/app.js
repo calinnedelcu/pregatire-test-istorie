@@ -142,6 +142,7 @@
     var nQ = (D.questions || []).filter(function (q) { return q.ch === chId; }).length;
     var nCards = (D.cards || []).filter(function (c) { return c.ch === chId; }).length;
     var nCz = (D.cloze || []).filter(function (c) { return c.ch === chId; }).length;
+    var nHard = (D.questions || []).filter(function (q) { return q.ch === chId && (q.lvl || 1) >= 4; }).length;
     var nMain = Math.min(20, nQ);
     var m;
     function item(icon, title, sub, fn, disabled, main) {
@@ -153,6 +154,7 @@
       body: h('div.stack',
         h('p.muted', ch.title),
         item('target', 'Întrebări din toată lecția', nQ ? U.nr(nMain, 'întrebare', 'întrebări') + ', câte puțin din fiecare secțiune' : 'Nu există întrebări', function () { App.go('quiz', { run: 1, chs: [chId], n: nMain, spread: 1 }); }, !nQ, true),
+        nHard ? item('flag', 'Doar întrebări foarte grele', U.nr(Math.min(20, nHard), 'întrebare', 'întrebări') + ' din cele ' + nHard + ' foarte grele ale lecției', function () { App.go('quiz', { run: 1, chs: [chId], n: Math.min(20, nHard), spread: 1, lvl: 4 }); }) : null,
         nQ > nMain ? item('target', 'Toate întrebările lecției', U.nr(nQ, 'întrebare', 'întrebări') + ', amestecate', function () { App.go('quiz', { run: 1, chs: [chId], n: nQ, spread: 1 }); }) : null,
         item('layers', 'Carduri din lecție', nCards ? U.nr(nCards, 'card', 'carduri') + '; cele scadente vin primele' : 'Nu există carduri', function () { App.go('cards', { run: 1, ch: chId, mode: 'smart' }); }, !nCards),
         item('pencil', 'Completează din notițe', nCz ? U.nr(nCz, 'propoziție', 'propoziții') + ' cu spații goale din lecție' : 'Nu există completări', function () { App.go('cloze', { ch: chId }); }, !nCz)

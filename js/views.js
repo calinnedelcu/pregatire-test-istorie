@@ -246,27 +246,26 @@
   /* ── Test simulat ── */
   V.test = function () {
     var sel = {}; D.chapters.forEach(function (c) { sel[c.id] = true; });
-    var n = 20, timed = true, hard = false;
-    var chipsCh = h('div.chips-pick'), chipsN = h('div.chips-pick'), hardBtn = h('button.toggle', { 'aria-pressed': 'false' }, h('span.knob'), 'Doar întrebări grele'), timerBtn = h('button.toggle', { 'aria-pressed': 'true' }, h('span.knob'), 'Cu cronometru');
+    var n = 20, timed = true, lvl = 0;
+    var chipsCh = h('div.chips-pick'), chipsN = h('div.chips-pick'), chipsLvl = h('div.chips-pick'), timerBtn = h('button.toggle', { 'aria-pressed': 'true' }, h('span.knob'), 'Cu cronometru');
     var info = h('p.muted');
     function draw() {
-      U.clear(chipsCh); U.clear(chipsN);
+      U.clear(chipsCh); U.clear(chipsN); U.clear(chipsLvl);
+      [[0, 'Toate'], [3, 'Grele'], [4, 'Foarte grele']].forEach(function (x) { chipsLvl.appendChild(h('button' + (lvl === x[0] ? '.on' : ''), { onClick: function () { lvl = x[0]; draw(); } }, x[1])); });
       D.chapters.forEach(function (c) { chipsCh.appendChild(h('button' + (sel[c.id] ? '.on' : ''), { onClick: function () { sel[c.id] = !sel[c.id]; draw(); } }, Notes.short(c.id))); });
       [10, 20, 30].forEach(function (k) { chipsN.appendChild(h('button' + (n === k ? '.on' : ''), { onClick: function () { n = k; draw(); } }, k + ' întrebări')); });
       timerBtn.setAttribute('aria-pressed', timed ? 'true' : 'false');
-      hardBtn.setAttribute('aria-pressed', hard ? 'true' : 'false');
       info.textContent = 'Timp: ' + (timed ? U.nr(Math.round(n * 45 / 60), 'minut', 'minute') + ' (45 de secunde pe întrebare)' : 'nelimitat') + '. Răspunsurile corecte apar abia la sfârșit.';
     }
     timerBtn.addEventListener('click', function () { timed = !timed; draw(); });
-    hardBtn.addEventListener('click', function () { hard = !hard; draw(); });
     draw();
     function start() {
       var chs = Object.keys(sel).filter(function (k) { return sel[k]; });
       if (!chs.length) { U.toast('Alege cel puțin un capitol'); return; }
       // același număr de întrebări din fiecare capitol; restul împărțirii merge la capitole alese la întâmplare
-      var each = Math.floor(n / chs.length), extra = n % chs.length, minLvl = hard ? 3 : 0, qs = [];
+      var each = Math.floor(n / chs.length), extra = n % chs.length, minLvl = lvl, qs = [];
       U.shuffle(chs).forEach(function (c, i) { qs = qs.concat(Quiz.pick({ chs: [c], n: each + (i < extra ? 1 : 0), minLvl: minLvl, spread: true })); });
-      if (qs.length < n) { // un capitol are prea puține întrebări (de ex. la „doar grele”): completează din celelalte
+      if (qs.length < n) { // un capitol are prea puține întrebări (de ex. la „foarte grele”): completează din celelalte
         var have = {}; qs.forEach(function (q) { have[q.id] = true; });
         qs = qs.concat(Quiz.pick({ chs: chs, n: n + qs.length, minLvl: minLvl }).filter(function (q) { return !have[q.id]; }).slice(0, n - qs.length));
       }
@@ -277,7 +276,7 @@
     var hist = S.data.tests.slice(-5).reverse();
     return h('div.stack',
       h('div.page-head', h('div', h('h1', 'Test simulat'), h('p', 'Testul e din toate cele ' + D.chapters.length + ' capitole, așa că întrebările se iau în părți egale din fiecare. Nu primești răspunsurile pe parcurs; la final vezi nota estimată și greșelile.'))),
-      h('div.card.opts-card', h('div.field', h('span.lab', 'Capitole'), chipsCh), h('div.field', h('span.lab', 'Lungime'), chipsN), h('div.field', timerBtn), h('div.field', hardBtn), info, h('button.btn.primary.lg', { onClick: start }, 'Începe testul')),
+      h('div.card.opts-card', h('div.field', h('span.lab', 'Capitole'), chipsCh), h('div.field', h('span.lab', 'Lungime'), chipsN), h('div.field', h('span.lab', 'Dificultate'), chipsLvl), h('div.field', timerBtn), info, h('button.btn.primary.lg', { onClick: start }, 'Începe testul')),
       hist.length ? h('div.card', h('h3', { style: 'margin-bottom:10px' }, 'Ultimele teste'), h('div.stack', hist.map(function (t) {
         return h('div.row', { style: 'justify-content:space-between' }, h('span', new Date(t.t).toLocaleDateString('ro-RO', { day: 'numeric', month: 'short' }) + ' · ' + t.n + ' întrebări'), h('b', 'Nota ' + t.grade.toFixed(1).replace('.', ',') + ' · ' + Math.round(t.pct * 100) + '%'));
       }))) : null);

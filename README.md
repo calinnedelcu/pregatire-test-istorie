@@ -21,6 +21,7 @@ Ca să publici o schimbare: `node tools/stamp.mjs && git add -A && git commit -m
 | `js/data-table.js` | Tabelul cu autorii medievali |
 | `js/data-cards.js`, `js/data-cards3.js` | Carduri, întrebări, jocuri, trucuri (cap. 3) |
 | `js/data-quiz.js`, `js/data-games.js` | Întrebări și jocuri (cap. 1–2) |
+| `js/data-hard.js` | Întrebări grele și foarte grele (nivel 3 și 4), pe toate cele 3 lecții |
 | `js/data-misc.js` | Axa timpului și trucuri (cap. 1–2) |
 | `assets/foto/` | Pozele originale (orientate corect), afișate la „Poza originală” |
 
