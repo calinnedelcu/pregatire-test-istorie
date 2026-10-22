@@ -21,12 +21,12 @@
     { id: 'd09', sec: 'desc-cauze', q: 'Ce apare atât la cauze, cât și la consecințe, în legătură cu religia?', a: '**Răspândirea creștinismului**: e și cauză, și consecință.', src: ['Răspândirea creștinismului'] },
     { id: 'd10', sec: 'desc-cauze', q: 'Cauză și consecință: ce se spune despre forma Pământului în fiecare listă?', a: 'Cauză: **ideea** că Pământul este sferic. Consecință: **se demonstrează** că Pământul este sferic.', src: ['Ideea că Pământul', 'desc-consecinte#Se demonstrează'] },
 
-    { id: 'd11', sec: 'desc-consecinte', kind: L, q: 'Consecințele descoperirilor (8 puncte)', items: ['Începe comerțul cu sclavi', 'Mor mulți amerindieni (90% din amerindieni mor de la boli / exterminări…)', 'Apar imperii coloniale', 'Centrul de greutate al comerțului se mută din Mediterană în Atlantic ⇒ se dezvoltă țările cu ieșire la Atlantic (la ocean)', 'Se răspândește creștinismul', 'Se demonstrează că Pământul este sferic', 'Nou impuls dat cercetării științifice', 'Biserica este afectată'], src: ['Începe comerțul cu sclavi'] },
+    { id: 'd11', sec: 'desc-consecinte', kind: L, q: 'Consecințele descoperirilor (8 puncte)', items: ['Începe comerțul cu sclavi', 'Mor mulți amerindieni (90% din amerindieni mor de la boli / exterminări…)', 'Apar imperii coloniale', 'Centrul de greutate al comerțului se mută din Mediterană în Atlantic ⇒ se dezvoltă țările cu ieșire la Atlantic (la ocean)', 'Se răspândește creștinismul', 'Se demonstrează că Pământul este sferic', 'Nou impuls dat curiozității, cercetării, științei', 'Biserica este afectată'], src: ['Începe comerțul cu sclavi'] },
     { id: 'd12', sec: 'desc-consecinte', q: 'Ce se întâmplă cu centrul de greutate al comerțului și ce urmează?', a: 'Se mută din **Mediterană** în **Atlantic** ⇒ se dezvoltă **țările cu ieșire la Atlantic** (la ocean).', src: ['Centrul de greutate'] },
     { id: 'd13', sec: 'desc-consecinte', q: 'Ce procent din amerindieni mor și de ce (caietul 3)?', a: '**90%**, de la **boli** / exterminări…', src: ['90% din amerindieni'] },
     { id: 'd14', sec: 'desc-consecinte', q: 'Ce comerț începe în urma descoperirilor?', a: 'Comerțul cu **sclavi**.', src: ['Începe comerțul cu sclavi'] },
     { id: 'd15', sec: 'desc-consecinte', q: 'Ce fel de imperii apar?', a: 'Imperii **coloniale**.', src: ['Apar imperii coloniale'] },
-    { id: 'd16', sec: 'desc-consecinte', q: 'Ce primește un nou impuls?', a: '**Cercetarea științifică** (curiozitatea).', src: ['Un nou impuls'] },
+    { id: 'd16', sec: 'desc-consecinte', q: 'Ce primește un nou impuls?', a: '**Curiozitatea**, **cercetarea** și **știința** (în caietul 3: „curiozit., cercet., științ.”).', src: ['Un nou impuls'] },
     { id: 'd17', sec: 'desc-consecinte', q: 'Ce instituție este afectată de descoperiri?', a: '**Biserica**.', src: ['Biserica'] },
     { id: 'd18', sec: 'desc-consecinte', q: 'Ce se demonstrează prin descoperiri?', a: 'Că **Pământul este sferic** (rotund).', src: ['Se demonstrează'] },
 
@@ -35,15 +35,15 @@
     { id: 'd21', sec: 'desc-mari', q: '1488: cine și ce?', a: '**Bartolomeu Diaz** – **Capul Bunei Speranțe**.', src: ['1488'] },
     { id: 'd22', sec: 'desc-mari', q: '1492: cine și ce?', a: '**Columb** – **America**.', src: ['1492'] },
     { id: 'd23', sec: 'desc-mari', q: '1494: ce se întâmplă?', a: '**Papa** împarte lumea în 2 – **Tratatul de la Tordesillas**.', src: ['Papa'] },
-    { id: 'd24', sec: 'desc-mari', q: 'Vasco da Gama: ce an și ce loc?', a: '**1498** (caietele 1 și 3; în caietul 2 scrie 1497) – **India**.', src: ['Vasco da Gama'] },
+    { id: 'd24', sec: 'desc-mari', q: 'Vasco da Gama: ce an și ce loc?', a: '**1498** (anul ajungerii; a plecat din Lisabona în 1497, cum scrie caietul 2) – **India**.', src: ['Vasco da Gama'] },
     { id: 'd25', sec: 'desc-mari', q: '1500: cine și ce?', a: '**Cabral** – **Brazilia**.', src: ['1500'] },
     { id: 'd26', sec: 'desc-mari', q: '1519 – 1522: cine și ce?', a: '**Magellan** – **înconjurul lumii**.', src: ['Magellan'] },
     { id: 'd27', sec: 'desc-mari', q: 'Cine a ajuns la Capul Bunei Speranțe și când?', a: '**Bartolomeu Diaz**, în **1488**.', src: ['1488'] },
-    { id: 'd28', sec: 'desc-mari', q: 'Cine a ajuns în India și când?', a: '**Vasco da Gama**, în **1498** (1497 în caietul 2).', src: ['Vasco da Gama'] },
+    { id: 'd28', sec: 'desc-mari', q: 'Cine a ajuns în India și când?', a: '**Vasco da Gama**, în **1498** (anul ajungerii; plecarea din Lisabona: 1497, cum scrie caietul 2).', src: ['Vasco da Gama'] },
     { id: 'd29', sec: 'desc-mari', q: 'Cine a ajuns în Brazilia și când?', a: '**Cabral**, în **1500**.', src: ['1500'] },
     { id: 'd30', sec: 'desc-mari', q: 'Cine a făcut înconjurul lumii și când?', a: '**Magellan**, în **1519 – 1522**.', src: ['Magellan'] },
     { id: 'd31', sec: 'desc-mari', q: 'Cine a ajuns în America și când?', a: '**Columb**, în **1492**.', src: ['1492'] },
-    { id: 'd32', sec: 'desc-mari', q: 'Al cui nume a ajuns să denumească America și ce a înțeles el?', a: '**Amerigo Vespucci**: numele Americii; își dă seama că **s-a descoperit** un nou continent (în caietul 3 se poate citi și „se descoperă”).', src: ['Amerigo Vespucci'] },
+    { id: 'd32', sec: 'desc-mari', q: 'Al cui nume a ajuns să denumească America și ce a înțeles el?', a: '**Amerigo Vespucci**: numele Americii; își dă seama că **s-a descoperit** un nou continent.', src: ['Amerigo Vespucci'] },
     { id: 'd33', sec: 'desc-mari', q: 'Cine împarte lumea în 2 în 1494 și prin ce act?', a: '**Papa**, prin **Tratatul de la Tordesillas**.', src: ['Papa'] },
 
     { id: 'd34', sec: 'desc-romani', kind: L, q: 'Românii trecuți la finalul lecției (3)', items: ['Spătarul Nicolae Milescu – China', 'Badea Cârțan – merge la Roma', 'Dimitrie Cantemir – (nu e scris nimic în notițe)'], src: ['Nicolae Milescu'] },
@@ -70,7 +70,7 @@
     { id: 'qd16', t: 'type', sec: 'desc-mari', lvl: 1, q: 'Scrie anul în care Columb ajunge în America.', a: ['1492'], why: '1492 – Columb – America.', src: ['1492'] },
     { id: 'qd17', t: 'type', sec: 'desc-mari', lvl: 1, q: 'Scrie anul în care Cabral ajunge în Brazilia.', a: ['1500'], why: '1500 – Cabral – Brazilia.', src: ['1500'] },
     { id: 'qd18', t: 'type', sec: 'desc-mari', lvl: 2, q: 'Cine a ajuns în India în 1498? (scrie numele)', a: ['Vasco da Gama', 'da Gama', 'Gama'], why: 'Vasco da Gama – India.', src: ['Vasco da Gama'] },
-    { id: 'qd19', t: 'mcq', sec: 'desc-mari', lvl: 3, q: 'În ce an a ajuns Vasco da Gama în India, potrivit caietelor 1 și 3?', ok: '1498', bad: ['1488', '1492', '1500'], why: 'Caietele 1 și 3 scriu 1498; caietul 2 scrie 1497.', src: ['Vasco da Gama'] },
+    { id: 'qd19', t: 'mcq', sec: 'desc-mari', lvl: 3, q: 'În ce an a ajuns Vasco da Gama în India, potrivit caietelor 1 și 3?', ok: '1498', bad: ['1488', '1492', '1500'], why: 'Caietele 1 și 3 scriu 1498, anul ajungerii în India; caietul 2 scrie 1497, anul plecării din Lisabona.', src: ['Vasco da Gama'] },
 
     { id: 'qd20', t: 'multi', sec: 'desc-cauze', lvl: 2, q: 'Care dintre acestea sunt **cauze** ale descoperirilor?', opts: [{ t: 'Ideea că Pământul este sferic', ok: true }, { t: 'Nevoia de aur', ok: true }, { t: 'Centralizarea statală', ok: true }, { t: 'Expansiunea otomană', ok: true }, { t: 'Începutul comerțului cu sclavi', ok: false }, { t: 'Apariția imperiilor coloniale', ok: false }, { t: 'Afectarea Bisericii', ok: false }], why: 'Cauze: Pământ sferic, aventură, aur, centralizare, expansiune teritorială, dezvoltare economică, creștinism, progrese tehnice, expansiunea otomană. Sclavii, imperiile coloniale și Biserica afectată sunt consecințe.', src: ['Nevoia de aur'] },
     { id: 'qd21', t: 'multi', sec: 'desc-consecinte', lvl: 2, q: 'Care dintre acestea sunt **consecințe** ale descoperirilor?', opts: [{ t: 'Începutul comerțului cu sclavi', ok: true }, { t: 'Apariția imperiilor coloniale', ok: true }, { t: 'Mutarea centrului de greutate al comerțului în Atlantic', ok: true }, { t: 'Afectarea Bisericii', ok: true }, { t: 'Nevoia de aur', ok: false }, { t: 'Apariția busolei', ok: false }, { t: 'Apariția caravelei', ok: false }], why: 'Consecințe: sclavi, imperii coloniale, mutarea comerțului în Atlantic, Biserica afectată (și altele). Aurul, busola și caravela sunt cauze.', src: ['Începe comerțul cu sclavi'] },
@@ -92,7 +92,7 @@
     { id: 'qh12', t: 'mcq', sec: 'desc-mari', lvl: 3, q: 'Care afirmație despre Henric Navigatorul și despre anul 1494 este corectă potrivit notițelor?', ok: 'Henric Navigatorul e trecut ca rege al Portugaliei, iar în 1494 Papa împarte lumea în 2 (Tordesillas)', bad: ['Henric Navigatorul e trecut ca rege al Spaniei, iar în 1494 Papa împarte lumea în 2 (Tordesillas)', 'Henric Navigatorul e trecut ca rege al Portugaliei, iar în 1494 Columb ajunge în America', 'Henric Navigatorul a făcut înconjurul lumii, iar în 1494 se semnează Tratatul de la Tordesillas'], why: 'Henric Navigatorul – rege al Portugaliei; 1494 – Papa împarte lumea în 2 – Tratatul de la Tordesillas. Columb: 1492.', src: ['Henric Navigatorul'] },
     { id: 'qh14b', t: 'mcq', sec: 'desc-cauze', lvl: 3, q: 'Care afirmație despre cauzele descoperirilor este corectă?', ok: 'Busola, astrolabul și caravela sunt progrese tehnice, iar expansiunea otomană e o cauză listată separat', bad: ['Busola și expansiunea otomană sunt progrese tehnice, iar astrolabul e o cauză listată separat', 'Caravela și centralizarea statală sunt progrese tehnice, iar busola e o consecință', 'Astrolabul e un progres tehnic, iar busola și caravela sunt consecințe'], why: 'Progrese tehnice: portulane/hărți mai bune, cârma dublă, busola, astrolabul, caravela. Expansiunea otomană e ultima cauză din listă.', src: ['Progrese tehnice'] },
     { id: 'qh15b', t: 'mcq', sec: 'desc-consecinte', lvl: 3, q: 'Care afirmație despre consecințe este corectă?', ok: 'Centrul de greutate al comerțului se mută din Mediterană în Atlantic ⇒ se dezvoltă țările cu ieșire la Atlantic', bad: ['Centrul de greutate al comerțului se mută din Atlantic în Mediterană ⇒ se dezvoltă țările cu ieșire la Mediterană', 'Centrul de greutate al comerțului se mută din Mediterană în Atlantic ⇒ se dezvoltă țările fără ieșire la mare', 'Centrul de greutate al Bisericii se mută din Mediterană în Atlantic ⇒ se dezvoltă imperiile coloniale'], why: 'Centrul de greutate al comerțului se mută din Mediterană în Atlantic ⇒ se dezvoltă țările cu ieșire la Atlantic (la ocean).', src: ['Centrul de greutate'] },
-    { id: 'qh13', t: 'multi', sec: 'desc-consecinte', lvl: 3, q: 'Care dintre acestea sunt **consecințe** ale descoperirilor (nu cauze)?', opts: [{ t: 'Moartea multor amerindieni', ok: true }, { t: 'Demonstrarea faptului că Pământul este sferic', ok: true }, { t: 'Nou impuls dat cercetării științifice', ok: true }, { t: 'Apariția astrolabului', ok: false }, { t: 'Dezvoltarea economică', ok: false }, { t: 'Spiritul de aventură', ok: false }], why: 'Consecințe: mor mulți amerindieni, se demonstrează că Pământul e sferic, nou impuls cercetării. Astrolabul, dezvoltarea economică și spiritul de aventură sunt cauze.', src: ['Mor mulți'] }
+    { id: 'qh13', t: 'multi', sec: 'desc-consecinte', lvl: 3, q: 'Care dintre acestea sunt **consecințe** ale descoperirilor (nu cauze)?', opts: [{ t: 'Moartea multor amerindieni', ok: true }, { t: 'Demonstrarea faptului că Pământul este sferic', ok: true }, { t: 'Nou impuls dat curiozității, cercetării, științei', ok: true }, { t: 'Apariția astrolabului', ok: false }, { t: 'Dezvoltarea economică', ok: false }, { t: 'Spiritul de aventură', ok: false }], why: 'Consecințe: mor mulți amerindieni, se demonstrează că Pământul e sferic, nou impuls cercetării. Astrolabul, dezvoltarea economică și spiritul de aventură sunt cauze.', src: ['Mor mulți'] }
   );
 
   (D.gamesSrc = D.gamesSrc || []).push(
@@ -101,7 +101,7 @@
     { id: 'go-d1', t: 'order', sec: 'desc-mari', lvl: 2, q: 'Ordonează cronologic marile descoperiri.', items: [{ t: 'Bartolomeu Diaz – Capul Bunei Speranțe', k: 1488 }, { t: 'Columb – America', k: 1492 }, { t: 'Tratatul de la Tordesillas', k: 1494 }, { t: 'Vasco da Gama – India', k: 1498 }, { t: 'Cabral – Brazilia', k: 1500 }, { t: 'Magellan – înconjurul lumii', k: 1519 }], why: '1488 → 1492 → 1494 → 1498 → 1500 → 1519–1522.', src: ['1488'] },
     { id: 'gs-d1', t: 'sort', sec: 'desc-cauze', lvl: 3, q: 'Cauză, consecință sau ambele?', buckets: ['Cauză', 'Consecință', 'Ambele'], items: [
       { t: 'Nevoia de aur', b: 0 }, { t: 'Centralizarea statală', b: 0 }, { t: 'Expansiunea otomană', b: 0 },
-      { t: 'Începutul comerțului cu sclavi', b: 1 }, { t: 'Apariția imperiilor coloniale', b: 1 }, { t: 'Afectarea Bisericii', b: 1 }, { t: 'Nou impuls dat cercetării științifice', b: 1 },
+      { t: 'Începutul comerțului cu sclavi', b: 1 }, { t: 'Apariția imperiilor coloniale', b: 1 }, { t: 'Afectarea Bisericii', b: 1 }, { t: 'Nou impuls dat curiozității, cercetării, științei', b: 1 },
       { t: 'Creștinismul (răspândirea lui)', b: 2 }, { t: 'Pământul sferic (ideea / demonstrarea)', b: 2 }
     ], why: 'Creștinismul apare la ambele liste; Pământul sferic apare ca idee (cauză) și ca demonstrație (consecință).', src: ['Nevoia de aur'] },
     { id: 'gs-d2', t: 'sort', sec: 'desc-cauze', lvl: 2, q: 'Progres tehnic sau altă cauză?', buckets: ['Progres tehnic', 'Altă cauză'], items: [
@@ -116,7 +116,7 @@
     { y: '1488', k: 1488, t: 'Bartolomeu Diaz – Capul Bunei Speranțe', ch: 'descoperiri' },
     { y: '1492', k: 1492, t: 'Columb – America', ch: 'descoperiri' },
     { y: '1494', k: 1494, t: 'Tratatul de la Tordesillas', n: 'Papa împarte lumea în 2.', ch: 'descoperiri' },
-    { y: '1498', k: 1498, t: 'Vasco da Gama – India', n: 'Caietul 2 scrie 1497.', ch: 'descoperiri' },
+    { y: '1498', k: 1498, t: 'Vasco da Gama – India', n: 'Anul ajungerii; a plecat din Lisabona în 1497, cum scrie caietul 2.', ch: 'descoperiri' },
     { y: '1500', k: 1500, t: 'Cabral – Brazilia', ch: 'descoperiri' },
     { y: '1519 – 1522', k: 1519, t: 'Magellan – înconjurul lumii', ch: 'descoperiri' }
   );
@@ -141,7 +141,7 @@
       chunks: [
         { t: 'Oamenii', items: ['comerț cu sclavi', 'mor mulți amerindieni (90%: boli / exterminări)'] },
         { t: 'Puterea și comerțul', items: ['imperii coloniale', 'centrul comerțului: Mediterană → Atlantic', 'se dezvoltă țările cu ieșire la Atlantic'] },
-        { t: 'Idei și credință', items: ['se răspândește creștinismul', 'se demonstrează că Pământul e sferic', 'nou impuls dat cercetării', 'Biserica afectată'] }
+        { t: 'Idei și credință', items: ['se răspândește creștinismul', 'se demonstrează că Pământul e sferic', 'nou impuls dat curiozității, cercetării, științei', 'Biserica afectată'] }
       ],
       tip: 'Oameni · Putere și comerț · Idei și credință.' },
     { id: 'mn-ambele', ch: 'descoperiri', title: 'Ce apare și la cauze, și la consecințe', phrase: '**Creștinismul** (se răspândește) · **Pământul sferic** (întâi ideea, apoi dovada)',

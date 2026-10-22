@@ -17,7 +17,7 @@ Ca să publici o schimbare: `git add -A && git commit -m "..." && git push`; Pag
 
 | Fișier | Ce conține |
 | --- | --- |
-| `js/data-ch1.js`, `js/data-ch2.js`, `js/data-ch3.js` | Notițele, rând cu rând, în formă de text indentat (vezi comentariile din fișiere). `**cuvânt**` = cuvânt-cheie, `{{corect|original}}` = greșeală de tipar corectată, `{c:1,3}` = apare în caietele 1 și 3 |
+| `js/data-ch1.js`, `js/data-ch2.js`, `js/data-ch3.js` | Notițele, rând cu rând, în formă de text indentat (vezi comentariile din fișiere). `**cuvânt**` = cuvânt-cheie, `{{corect|original}}` = greșeală de tipar corectată, `{{citit|~explicație}}` = citire stabilită din context, `{?text|explicație}` = citire nesigură, `{c:1,3}` = apare în caietele 1 și 3 |
 | `js/data-table.js` | Tabelul cu autorii medievali |
 | `js/data-cards.js`, `js/data-cards3.js` | Carduri, întrebări, jocuri, trucuri (cap. 3) |
 | `js/data-quiz.js`, `js/data-games.js` | Întrebări și jocuri (cap. 1–2) |

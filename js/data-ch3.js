@@ -8,8 +8,7 @@
 
 ## desc-intro | Perioadă și filme | 7,11
 + Descoperitori de noi lumi și civilizații
-  - între sec. **XV – XVIII** {c:3}
-  - {?sec. XV – …|în caietul 1 al doilea secol din interval se citește greu: poate fi XVII, XVIII sau XIX} {c:1}
+  - între sec. **XV – {{XVIII|~în caietul 1 al doilea secol se citește greu (XVII, XVIII sau XIX); caietul 3 scrie clar XVIII}}** {c:1,3}
 + Filme:
   - „**Cucerirea paradisului**”
   - „**Apocalipto**”
@@ -29,16 +28,16 @@
   - apariția unor **portulane / hărți mai bune**
   - **cârma dublă**
   - apariția **busolei**
-  - apariția {?astrolabului|în caietul 1 scrie „astrologului”, în caietul 3 „astrolabului”; instrumentul se numește astrolab}
+  - apariția **{{astrolabului|astrologului (caietul 1)}}**
   - apariția **caravelei**
-    ?> Caietul 3 adaugă, între paranteze, o explicație pentru caravelă: „(centrul de G sub-apă și e mai b… pe furtună)”. „G” e probabil „greutate”; cuvântul „sub” și sfârșitul lui „b…” se citesc greu, așa că verifică-le în poza 11.
+    - (centru de **greutate** sub-apă și e mai {{bună|~în caietul 3 scrie „(centru de G sub-apă și e mai b… pe furtună)”; „G” = greutate, „sub” se citește greu, iar „b…” e tăiat de marginea paginii}} pe furtună) {c:3}
 - **Expansiunea otomană**
 
 ## desc-consecinte | Consecințele descoperirilor | 7,9,10,11
 > În caiete, cuvântul „Consecințe” e tăiat, iar titlul rămas e „Descoperitori și descoperiri”; sub el e lista consecințelor.
 - Începe **comerțul cu sclavi**
 - Mor mulți **amerindieni** {c:2}
-  - **90%** din amerindieni mor de la **boli** / {?exterminări|în caietul 3 cuvântul se citește greu: „exterminări” sau „exterminați”; după el mai urmează 1–3 litere tăiate de marginea paginii}… {c:3}
+  - **90%** din amerindieni mor de la **boli** / {?exterminări|în caietul 3 se citește „extermin…”, probabil „exterminări” (sau „exterminare”, „exterminați”); sfârșitul cuvântului e tăiat de marginea paginii}… {c:3}
   - răspândite **boli** {c:1}
 - Apar **imperii coloniale**
 - **Centrul de greutate** al comerțului se mută din **Mediterană** în **Atlantic**
@@ -49,26 +48,27 @@
 - Se **răspândește creștinismul**
 - Se **demonstrează** că **Pământul este sferic** (rotund)
   > Caietul 1: o săgeată curbă pornește de sub acest rând și ajunge la „nou impuls dat cercetării” (între ele e „răspândite boli”).
-- Un **nou impuls** dat **cercetării științifice**
-  > Caietul 1: „nou impuls dat cercetării”. Caietul 2: „un nou impuls dat științei”. Caietul 3: „un nou impuls dat curiozit., cercet. științ…” (prescurtat; probabil „curiozității, cercetării științifice”).
+- Un **nou impuls** dat **curiozității**, **cercetării**, **științei**
+  > Caietul 1: „nou impuls dat cercetării”. Caietul 2: „un nou impuls dat științei”. Caietul 3: „un nou impuls dat curiozit., cercet., științ.” (prescurtat: curiozității, cercetării, științei).
 - **Biserica** este **afectată**
 
 ## desc-mari | Mari descoperiri | 8,10,11
 > Caietul 3 scrie titlul „Mari descoperitori”; caietele 1 și 2 scriu „Mari descoperiri”.
 > În caietul 1, cuvântul „TEST” e încercuit deasupra titlului acestei pagini. Testul e din toate cele 3 capitole, nu doar din această parte.
 - **Henric Navigatorul** – rege al **Portugaliei**
-  ?> În caiete scrie „rege al Portugaliei”. În manualele de istorie, Henric Navigatorul este numit de obicei prinț (infante) al Portugaliei. Pentru test, ține minte formularea din caiet.
+  ?> În caiete scrie „rege al Portugaliei”. Istoric, Henric Navigatorul (1394 – 1460) n-a fost rege, ci prinț (infante), fiul regelui Ioan I al Portugaliei. Pentru test, ține minte formularea din caiet.
   - a sprijinit **coasta Africii** {c:1}
-    > Caietul 3 scrie „a sprijinit dezv.” și, pe linia următoare, un cuvânt greu de citit („Vefrică”), probabil „Vest Africă”. Caietul 2 se oprește la „care a sprijinit”, fără continuare.
+    > Caietul 3 scrie „a sprijinit dezv.” și, pe linia următoare, „Vefrică”, adică probabil „Vest Africă”. Se potrivește cu istoria: Henric a finanțat expedițiile de-a lungul coastei de vest a Africii. Caietul 2 se oprește la „care a sprijinit”, fără continuare.
 - **1488** – **{{Bartolomeu|Bartolomeo}} Diaz** – **Capul Bunei Speranțe** {c:2,3}
 - **1498** – **Vasco da Gama** – **India** {c:1,3}
   - caietul 2 scrie **1497** pentru Vasco da Gama – India
+  > Istoric, ambele date sunt corecte: Vasco da Gama a plecat din Lisabona în iulie 1497 și a ajuns la Calicut, în India, în mai 1498. În caietele 1 și 3 e anul ajungerii.
 - **1500** – **Cabral** – **Brazilia**
   > Caietul 2 scrie „1500 – Brazilia – Cabral”; caietul 1 scrie „1500 → Cabral”, iar caietul 3 doar „1500”.
 - **1492** – **Columb** – **America** {c:1,2}
 - **1519 – 1522** – **Magellan** – **înconjurul lumii**
 - **Amerigo Vespucci** – **numele Americii** {c:1}
-  - își dă seama că {?s-a descoperit|în caietul 3 verbul se citește greu: „s-a descoperit” sau „se descoperă”} **un nou continent** {c:3}
+  - își dă seama că {{s-a descoperit|~în caietul 3 verbul se citește greu; sensul cere „s-a descoperit” (altă variantă: „se descoperă”)}} **un nou continent** {c:3}
   > În caietul 2, la Vespucci data e scrisă doar „15…”, fără restul anului.
 - **Papa** împarte lumea în 2 în **1494** – **Tratatul de la {{Tordesillas|Tortesilas}}**
 @embed desc-strip

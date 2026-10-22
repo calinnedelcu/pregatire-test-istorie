@@ -134,7 +134,9 @@
         kw.appendChild(inline(m[1]));
         frag.appendChild(kw);
       } else if (m[2] != null) {
-        var fx = h('span.fix', { title: 'În notițe: ' + m[3], tabindex: '0', role: 'button', 'aria-label': 'Greșeală de tipar corectată: în notițe scria ' + m[3] }, m[2], h('span.was', ' (în notițe: ' + m[3] + ')'));
+        // {{ok|~explicație}} = citire stabilită din context; {{ok|original}} = greșeală de tipar corectată
+        var ctx = m[3].charAt(0) === '~', why = ctx ? m[3].slice(1).trim() : m[3];
+        var fx = h('span.fix', { title: ctx ? 'Citit din context: ' + why : 'În notițe: ' + why, tabindex: '0', role: 'button', 'aria-label': ctx ? 'Citire stabilită din context: ' + why : 'Greșeală de tipar corectată: în notițe scria ' + why }, m[2], h('span.was', ' (' + (ctx ? why : 'în notițe: ' + why) + ')'));
         frag.appendChild(fx);
       } else if (m[4] != null) {
         frag.appendChild(h('span.unsure', { title: 'Citire nesigură în scrisul de mână. ' + m[5], tabindex: '0' }, m[4], h('sup', '?')));
@@ -157,12 +159,15 @@
     Notes.walk(sec.body, function (n) {
       if (n.kind === 'warn') unsure.push(strip(n.text));
       if (!n.text || n.kind === 'note' || n.kind === 'warn') return;
-      var re = new RegExp(TOKEN_SRC, 'g'), m;
-      while ((m = re.exec(n.text))) {
-        if (m[2] != null) fixes.push('„' + m[3] + '” → „' + m[2] + '” (greșeală de tipar corectată)');
-        else if (m[4] != null) unsure.push('„' + m[4] + '” – ' + m[5]);
-        else if (m[0] === '{gol}') blanks.push('După „' + n.plain + '” nu e scris nimic în notițe.');
-      }
+      (function scan(text) {
+        var re = new RegExp(TOKEN_SRC, 'g'), m;
+        while ((m = re.exec(text))) {
+          if (m[1] != null) scan(m[1]); // marcajele din interiorul unui cuvânt-cheie
+          else if (m[2] != null) fixes.push(m[3].charAt(0) === '~' ? '„' + m[2] + '” – ' + m[3].slice(1).trim() + ' (citit din context)' : '„' + m[3] + '” → „' + m[2] + '” (greșeală de tipar corectată)');
+          else if (m[4] != null) unsure.push('„' + m[4] + '” – ' + m[5]);
+          else if (m[0] === '{gol}') blanks.push('După „' + n.plain + '” nu e scris nimic în notițe.');
+        }
+      })(n.text);
     });
     return { fixes: fixes, unsure: unsure, blanks: blanks };
   }
@@ -358,7 +363,7 @@
     content.appendChild(h('div.card.flat.banner.legend', { style: 'margin-bottom:16px' }, U.icon('info', 20),
       h('p', 'Textul de mai jos e preluat din notițele tale, rând cu rând. ',
         h('span.kw', 'Galbenul'), ' marchează cuvintele-cheie; ',
-        h('span.fix', 'liniuța punctată'), ' arată o greșeală de tipar corectată (atinge-o ca să vezi ce scria); ',
+        h('span.fix', 'liniuța punctată'), ' arată o greșeală de tipar corectată sau un loc citit din context (atinge-o ca să vezi explicația); ',
         h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. Pozele originale le deschizi cu butonul de mai sus. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
 
     var toc = h('div.toc', { role: 'navigation', 'aria-label': 'Secțiunile capitolului' }, ch.sections.map(function (sec, i) {

@@ -1,6 +1,7 @@
 /* Capitolul 1 — notițe tipărite C1 L1+2 (pozele 1–4).
    Sintaxă: vezi js/notes.js (parseNotes). **cheie** = cuvânt-cheie (se ascunde în modul de recitare și la completări),
-   {{corect|original}} = greșeală de tipar corectată, {gol} = loc rămas gol în notițe. */
+   {{corect|original}} = greșeală de tipar corectată, {{citit|~explicație}} = citire stabilită din context,
+   {?text|explicație} = citire nesigură, {gol} = loc rămas gol în notițe. */
 (function (g) {
   var D = (g.DATA = g.DATA || {});
   (D.notesSrc = D.notesSrc || []).push(String.raw`
