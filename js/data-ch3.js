@@ -9,8 +9,8 @@
 ## desc-intro | Perioadă și filme | 7,11
 + Descoperitori de noi lumi și civilizații {c:3}
   > Caietul 1 scrie „Descoperitori – noi lumi și civilizații”.
-  - între sec. **XV – XVIII** {c:3}
-  - {?sec. XV – …|în caietul 1 al doilea număr din interval se citește greu: poate fi XVIII sau XIX; caietul 3 scrie XVIII} {c:1}
+  - între sec. **XV – XVIII** {c:1,3}
+    > Caietul 1: al doilea număr din interval se citește greu (XVIII sau XIX). Am ținut XVIII, cum scrie clar caietul 3.
 + Filme:
   - „**Cucerirea paradisului**”
   - „**Apocalipto**”
