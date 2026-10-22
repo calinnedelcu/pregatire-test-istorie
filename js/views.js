@@ -259,9 +259,9 @@
     }
     timerBtn.addEventListener('click', function () { timed = !timed; draw(); });
     draw();
-    function start() {
-      var chs = Object.keys(sel).filter(function (k) { return sel[k]; });
-      if (!chs.length) { U.toast('Alege cel puțin un capitol'); return; }
+    function start() { startFor(Object.keys(sel).filter(function (k) { return sel[k]; })); }
+    function startFor(chs) {
+      if (!chs.length) { U.toast('Alege cel puțin o lecție'); return; }
       // același număr de întrebări din fiecare capitol; restul împărțirii merge la capitole alese la întâmplare
       var each = Math.floor(n / chs.length), extra = n % chs.length, minLvl = lvl, qs = [];
       U.shuffle(chs).forEach(function (c, i) { qs = qs.concat(Quiz.pick({ chs: [c], n: each + (i < extra ? 1 : 0), minLvl: minLvl, spread: true })); });
@@ -275,8 +275,19 @@
     }
     var hist = S.data.tests.slice(-5).reverse();
     return h('div.stack',
-      h('div.page-head', h('div', h('h1', 'Test simulat'), h('p', 'Testul e din toate cele ' + D.chapters.length + ' capitole, așa că întrebările se iau în părți egale din fiecare. Nu primești răspunsurile pe parcurs; la final vezi nota estimată și greșelile.'))),
-      h('div.card.opts-card', h('div.field', h('span.lab', 'Capitole'), chipsCh), h('div.field', h('span.lab', 'Lungime'), chipsN), h('div.field', h('span.lab', 'Dificultate'), chipsLvl), h('div.field', timerBtn), info, h('button.btn.primary.lg', { onClick: start }, 'Începe testul')),
+      h('div.page-head', h('div', h('h1', 'Test simulat'), h('p', 'Poți da testul pe o singură lecție sau pe mai multe împreună (atunci întrebările se iau în părți egale din fiecare). Nu primești răspunsurile pe parcurs; la final vezi nota estimată și greșelile.'))),
+      h('div.card.opts-card', h('div.field', h('span.lab', 'Lungime'), chipsN), h('div.field', h('span.lab', 'Dificultate'), chipsLvl), h('div.field', timerBtn), info),
+      h('div.card', h('h3', { style: 'margin-bottom:4px' }, 'Alege testul'), h('p.muted.small', { style: 'margin-bottom:6px' }, 'Fiecare lecție are testul ei, cu lungimea, dificultatea și cronometrul de mai sus.'),
+        D.chapters.map(function (c, i) {
+          var nq = D.questions.filter(function (q) { return q.ch === c.id; }).length;
+          var nOp = D.questions.filter(function (q) { return q.ch === c.id && q.grp === 'opere'; }).length;
+          return h('div.lesson-test',
+            h('div', h('b', 'Lecția ' + (i + 1)), h('span.muted', ' · ' + c.title), h('div.small.muted', U.nr(nq, 'întrebare', 'întrebări'))),
+            h('div.row', h('button.btn.primary.sm', { onClick: function () { startFor([c.id]); } }, U.icon('target', 15), 'Test lecția ' + (i + 1)),
+              nOp ? h('button.btn.sm', { onClick: function () { App.go('quiz', { run: 1, chs: [c.id], grp: 'opere', n: nOp }); } }, U.icon('link', 15), 'Operă ↔ autor') : null));
+        }),
+        h('div.lesson-test', h('div', h('b', 'Mai multe lecții împreună'), h('div.field', { style: 'margin-top:8px' }, chipsCh)),
+          h('button.btn.sm', { onClick: start }, U.icon('target', 15), 'Test din lecțiile alese'))),
       hist.length ? h('div.card', h('h3', { style: 'margin-bottom:10px' }, 'Ultimele teste'), h('div.stack', hist.map(function (t) {
         return h('div.row', { style: 'justify-content:space-between' }, h('span', new Date(t.t).toLocaleDateString('ro-RO', { day: 'numeric', month: 'short' }) + ' · ' + t.n + ' întrebări'), h('b', 'Nota ' + t.grade.toFixed(1).replace('.', ',') + ' · ' + Math.round(t.pct * 100) + '%'));
       }))) : null);

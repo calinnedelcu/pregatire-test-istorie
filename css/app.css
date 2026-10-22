@@ -287,6 +287,8 @@ main#view { max-width: 920px; margin: 0 auto; padding: 22px 0 calc(var(--tabbar-
 .note-i.warn { color: var(--warn); }
 .note-i[aria-expanded="true"] { background: var(--accent-soft); }
 .note-i.warn[aria-expanded="true"] { background: var(--warn-soft); }
+.lesson-test { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--line); }
+.lesson-test:first-of-type { border-top: 0; }
 .lesson-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; padding: 16px 18px; border: 1px dashed var(--line); border-radius: var(--r-m); font-family: var(--f-ui); color: var(--ink-2); }
 .note-bar { margin: 0 0 6px 18px; }
 .callout.note { background: var(--accent-soft); color: var(--ink); }
