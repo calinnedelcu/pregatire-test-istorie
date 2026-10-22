@@ -103,7 +103,7 @@
         h('div.row',
           h('button.btn.sm', { onClick: function () { App.go('notes', { ch: ch.id }); } }, U.icon('book', 15), 'Citește'),
           h('button.btn.sm', { onClick: function () { App.go('cards', { run: 1, ch: ch.id, mode: 'smart' }); } }, U.icon('layers', 15), 'Carduri'),
-          h('button.btn.sm', { onClick: function () { App.go('quiz', { run: 1, chs: [ch.id], n: 10 }); } }, U.icon('target', 15), 'Întrebări')));
+          h('button.btn.sm', { onClick: function () { App.go('quiz', { run: 1, chs: [ch.id], n: 10, spread: 1 }); } }, U.icon('target', 15), 'Întrebări')));
     }));
 
     // parcurs
@@ -265,7 +265,7 @@
       if (!chs.length) { U.toast('Alege cel puțin un capitol'); return; }
       // același număr de întrebări din fiecare capitol; restul împărțirii merge la capitole alese la întâmplare
       var each = Math.floor(n / chs.length), extra = n % chs.length, minLvl = hard ? 3 : 0, qs = [];
-      U.shuffle(chs).forEach(function (c, i) { qs = qs.concat(Quiz.pick({ chs: [c], n: each + (i < extra ? 1 : 0), minLvl: minLvl })); });
+      U.shuffle(chs).forEach(function (c, i) { qs = qs.concat(Quiz.pick({ chs: [c], n: each + (i < extra ? 1 : 0), minLvl: minLvl, spread: true })); });
       if (qs.length < n) { // un capitol are prea puține întrebări (de ex. la „doar grele”): completează din celelalte
         var have = {}; qs.forEach(function (q) { have[q.id] = true; });
         qs = qs.concat(Quiz.pick({ chs: chs, n: n + qs.length, minLvl: minLvl }).filter(function (q) { return !have[q.id]; }).slice(0, n - qs.length));

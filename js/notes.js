@@ -394,7 +394,9 @@
     content.appendChild(h('div.ch-head',
       h('div.row', h('h1', ch.title), h('span.ch-code', ch.code), h('span.stamp', { title: 'Capitolul intră la test' }, 'TEST')),
       ch.subtitle ? h('p.sub', ch.subtitle) : null,
-      h('div.row', h('span.chip.' + ch.cls, readCount + ' / ' + ch.sections.length + ' secțiuni citite'), ch.photos.length ? photoLink(ch.photos, 'Toate pozele originale') : null)
+      h('div.row', h('span.chip.' + ch.cls, readCount + ' / ' + ch.sections.length + ' secțiuni citite'),
+        h('button.btn.primary.sm', { onClick: function () { App.lessonMenu(ch.id); } }, U.icon('zap', 15), 'Exersează lecția'),
+        ch.photos.length ? photoLink(ch.photos, 'Toate pozele originale') : null)
     ));
     content.appendChild(h('div.card.flat.banner.legend', { style: 'margin-bottom:16px' }, U.icon('info', 20),
       h('p', 'Textul de mai jos e preluat din notițele tale, rând cu rând. ',
@@ -413,6 +415,8 @@
     if (ch.note) content.appendChild(h('div.callout.note', { style: 'margin-bottom:16px' }, U.icon('info', 16), h('span', inline(ch.note))));
     // secțiuni
     ch.sections.forEach(function (sec) { content.appendChild(renderSection(sec, ch)); });
+    content.appendChild(h('div.lesson-end', h('span', 'Ai ajuns la capătul lecției. Verifică ce ai reținut.'),
+      h('button.btn.primary', { onClick: function () { App.lessonMenu(ch.id); } }, U.icon('zap', 16), 'Exersează lecția')));
     root.classList.toggle('recite', recite);
     syncKw();
 

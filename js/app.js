@@ -136,6 +136,30 @@
     });
   };
 
+  /* meniu de exersare pentru o lecție întreagă (capitol) */
+  App.lessonMenu = function (chId) {
+    var ch = D.chById[chId];
+    var nQ = (D.questions || []).filter(function (q) { return q.ch === chId; }).length;
+    var nCards = (D.cards || []).filter(function (c) { return c.ch === chId; }).length;
+    var nCz = (D.cloze || []).filter(function (c) { return c.ch === chId; }).length;
+    var nMain = Math.min(20, nQ);
+    var m;
+    function item(icon, title, sub, fn, disabled, main) {
+      return h('button.mode' + (main ? '.main' : ''), { disabled: disabled, onClick: function () { m.close(); fn(); }, style: 'width:100%' },
+        h('div.mi', U.icon(icon, 22)), h('b', title), h('span', sub));
+    }
+    m = App.modal({
+      title: 'Exersează lecția',
+      body: h('div.stack',
+        h('p.muted', ch.title),
+        item('target', 'Întrebări din toată lecția', nQ ? U.nr(nMain, 'întrebare', 'întrebări') + ', câte puțin din fiecare secțiune' : 'Nu există întrebări', function () { App.go('quiz', { run: 1, chs: [chId], n: nMain, spread: 1 }); }, !nQ, true),
+        nQ > nMain ? item('target', 'Toate întrebările lecției', U.nr(nQ, 'întrebare', 'întrebări') + ', amestecate', function () { App.go('quiz', { run: 1, chs: [chId], n: nQ, spread: 1 }); }) : null,
+        item('layers', 'Carduri din lecție', nCards ? U.nr(nCards, 'card', 'carduri') + '; cele scadente vin primele' : 'Nu există carduri', function () { App.go('cards', { run: 1, ch: chId, mode: 'smart' }); }, !nCards),
+        item('pencil', 'Completează din notițe', nCz ? U.nr(nCz, 'propoziție', 'propoziții') + ' cu spații goale din lecție' : 'Nu există completări', function () { App.go('cloze', { ch: chId }); }, !nCz)
+      )
+    });
+  };
+
   /* ── setări ── */
   App.settings = function () {
     var s = Store.data.settings;

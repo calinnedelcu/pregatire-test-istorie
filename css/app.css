@@ -287,6 +287,7 @@ main#view { max-width: 920px; margin: 0 auto; padding: 22px 0 calc(var(--tabbar-
 .note-i.warn { color: var(--warn); }
 .note-i[aria-expanded="true"] { background: var(--accent-soft); }
 .note-i.warn[aria-expanded="true"] { background: var(--warn-soft); }
+.lesson-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; padding: 16px 18px; border: 1px dashed var(--line); border-radius: var(--r-m); font-family: var(--f-ui); color: var(--ink-2); }
 .note-bar { margin: 0 0 6px 18px; }
 .callout.note { background: var(--accent-soft); color: var(--ink); }
 .callout.note svg { color: var(--accent); }
@@ -434,6 +435,7 @@ table.src td.empty .v { color: var(--ink-3); font-style: italic; }
 /* ── Exersează ─────────────────────────────────────────── */
 .modes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .mode { display: grid; gap: 8px; text-align: left; padding: 16px 18px; border-radius: var(--r-l); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); transition: transform 0.1s, border-color 0.15s; align-content: start; }
+.mode.main { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--accent-soft); }
 .mode:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
 .mode .mi { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
 .mode b { font-size: 18px; }

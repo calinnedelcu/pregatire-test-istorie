@@ -433,6 +433,17 @@
       var w = !x ? 1.2 : x.ko > x.ok ? 2.6 : x.ko > 0 ? 1.5 : 0.5;
       return { q: q, w: w * (0.5 + Math.random()) };
     }).sort(function (a, b) { return b.w - a.w; });
+    if (o.spread) {
+      // câte o întrebare din fiecare secțiune, pe rând, ca să fie acoperită toată lecția (nu doar secțiunile mari)
+      var bySec = {};
+      scored.forEach(function (x) { (bySec[x.q.sec] = bySec[x.q.sec] || []).push(x); });
+      var queues = U.shuffle(Object.keys(bySec)).map(function (k) { return bySec[k]; }), mixed = [];
+      for (var more = true; more;) {
+        more = false;
+        queues.forEach(function (qu) { if (qu.length) { mixed.push(qu.shift()); more = true; } });
+      }
+      scored = mixed;
+    }
     var n = o.n || 10, out = [], rest = [];
     // plafon: tabelul surselor și jocurile nu iau tot setul
     var capTab = Math.max(1, Math.ceil(n * 0.3)), capGame = Math.max(1, Math.ceil(n * 0.25)), cTab = 0, cGame = 0;
@@ -456,9 +467,9 @@
     params = params || {};
     var App = g.App;
     if (params.run || params.sec || params.ids) {
-      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.hard ? 3 : 0, n: params.ids ? params.ids.length : (params.n || 10) });
+      var qs = Quiz.pick({ sec: params.sec, chs: params.chs, types: params.types, ids: params.ids, minLvl: params.hard ? 3 : 0, n: params.ids ? params.ids.length : (params.n || 10), spread: params.spread });
       if (!qs.length) return h('div.card', h('p', 'Nu există întrebări pentru această selecție.'), h('button.btn', { onClick: function () { App.go('practice'); } }, 'Înapoi'));
-      return Quiz.session({ title: 'Întrebări' + (params.sec ? ' · ' + D.sec[params.sec].title : ''), questions: U.shuffle(qs), mode: 'practice', again: { route: 'quiz', params: params.ids ? {} : params } });
+      return Quiz.session({ title: 'Întrebări' + (params.sec ? ' · ' + D.sec[params.sec].title : params.spread && params.chs && params.chs.length === 1 ? ' · ' + D.chById[params.chs[0]].title : ''), questions: U.shuffle(qs), mode: 'practice', again: { route: 'quiz', params: params.ids ? {} : params } });
     }
     var sel = {}; D.chapters.forEach(function (c) { sel[c.id] = true; });
     var n = 10, hard = false;
