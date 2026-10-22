@@ -42,6 +42,7 @@
   > Caietul 3 scrie „comerț cu sclavi”, la sfârșitul primei pagini, după „se demonstrează că pământul e sferic”.
 - Mor mulți **amerindieni** {c:2}
   - **90%** din amerindieni mor de la **boli** / {{exterminări|~în caietul 3 cuvântul e tăiat de marginea paginii și se citește „extermin…”; sensul („mor de boli / exterminări”) cere „exterminări”}} {c:3}
+    > Verificare pe net: cifra de 90% n-am găsit-o în surse; unele estimări dau peste 75% din populația Lumii Noi, în primele secole, mai ales din cauza bolilor. Pentru test, ține cifra din caiet.
   - răspândite **boli** {c:1}
 - Apar **imperii coloniale**
 - **Centrul de greutate** al comerțului se mută din **Mediterană** în **Atlantic**
@@ -82,6 +83,7 @@
   - își dă seama că {{s-a descoperit|~în caietul 3 verbul se citește greu; sensul cere „s-a descoperit” (altă variantă: „se descoperă”)}} **un nou continent** {c:3}
     - {+1501 – 1502: în această călătorie conchide că ținuturile descoperite nu sunt Asia, ci un continent nou|completat de pe net: anul nu apare în notițe}
 - **Papa** împarte lumea în 2 în **1494** – **Tratatul de la {{Tordesillas|Tortesilas}}**
+  > Verificare pe net: Tratatul de la Tordesillas (1494) a fost semnat între Spania și Portugalia, după bulele papale din 1493 care împărțiseră lumea.
   > Caietul 1: „Papa → tratatul de la Tortesilas 1494”. Caietul 2: „1494 – Tratatul de la Tortesilas”. Caietul 3: „Papa împarte lumea în 2 în 1494 – Tratatul de la Tor…”, se oprește la „Tor”.
 @embed desc-strip
 

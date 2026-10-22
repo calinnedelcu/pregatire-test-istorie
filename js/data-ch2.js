@@ -12,6 +12,7 @@
   - comparații cu „**ceilalți**”
 + Cărturari
   - **Grigore Ureche** (**1596 – 1647**)
+    > Verificare pe net: sursele dau nașterea în jur de 1590 – 1595 (de obicei 1590), moartea în 1647. Pentru test, ține anul din notițe.
     - „**Letopisețul Țării Moldovei**”
     - Stil **narator**, asemănător celui **oral**
     - Ideea **latinității** limbii române
@@ -38,14 +39,17 @@
   - Autor de **hărți**
   - Îi descrie pe **mongoli** și **chinezi**
 - **Constantin Cantacuzino** (**1640 – 1716**)
+  > Verificare pe net: unele surse dau nașterea în 1639, moartea în 1716. Pentru test, ține anul din notițe.
   - „**Istoria Țării Românești dintru început**”
   - Argumentează **continuitatea** românilor
   - **Hartă** a Țării Românești
 - **Dinicu Golescu** (Constantin) (**1777 – 1830**)
+  > Verificare pe net: nașterea în 1777 se confirmă; anul morții (1830) nu l-am putut confirma din sursele găsite.
   - „**Însemnarea a călătoriei mele Constantin Radovici din Golești**”
   - **Primul jurnal de călătorie**
   - Sprijină **învățământul**
 - **Badea Cârțan** (**1849 - 1911**)
+  > Verificare pe net: anii vieții se confirmă (1849 – 1911). Numărul călătoriilor la Roma diferă între surse (a doua în 1897; unele spun că a ajuns de două sau de trei ori).
   - Călătorește pentru a duce **carte românească** în **Ardeal**
   - Ajunge de **trei ori** la **Roma**
 `);
