@@ -11,7 +11,7 @@ const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 const html = read('index.html');
 const title = html.match(/<title>([^<]+)<\/title>/)[1];
 const fontLink = html.match(/<link rel="stylesheet" href="(https:\/\/fonts\.googleapis\.com[^"]+)">/)[1];
-const scripts = [...html.matchAll(/<script src="(js\/[^"]+)"/g)].map((m) => m[1]);
+const scripts = [...html.matchAll(/<script src="(js\/[^"?]+)/g)].map((m) => m[1]);
 const css = read('css/app.css');
 const js = scripts.map((f) => '/* ' + f + ' */\n' + read(f)).join('\n');
 

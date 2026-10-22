@@ -5,7 +5,7 @@ Site de studiu făcut din notițele tale (11 poze): notițe interactive, carduri
 ## Online
 
 Site-ul e publicat cu GitHub Pages la https://calinnedelcu.github.io/pregatire-test-istorie/ (public: oricine are linkul poate vedea notițele și pozele).
-Ca să publici o schimbare: `git add -A && git commit -m "..." && git push`; Pages se actualizează singur în cel mult un minut.
+Ca să publici o schimbare: `node tools/stamp.mjs && git add -A && git commit -m "..." && git push` (`stamp.mjs` pune în `index.html` o amprentă pe fiecare fișier, ca browserul să ia imediat versiunea nouă); Pages se actualizează singur în cel mult un minut.
 
 ## Cum îl deschizi
 

@@ -11,7 +11,7 @@ ctx.window = ctx;
 vm.createContext(ctx);
 
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const files = [...html.matchAll(/<script src="(js\/[^"]+)"/g)].map((m) => m[1]).filter((f) => !/(app|views)\.js$/.test(f));
+const files = [...html.matchAll(/<script src="(js\/[^"?]+)/g)].map((m) => m[1]).filter((f) => !/(app|views)\.js$/.test(f));
 for (const f of files) {
   try { vm.runInContext(fs.readFileSync(path.join(root, f), 'utf8'), ctx, { filename: f }); }
   catch (e) { console.error('Eroare la încărcarea ' + f + ': ' + e.message); process.exit(1); }
