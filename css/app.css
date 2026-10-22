@@ -435,7 +435,11 @@ table.src td.empty .v { color: var(--ink-3); font-style: italic; }
 /* ── Exersează ─────────────────────────────────────────── */
 .modes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .mode { display: grid; gap: 8px; text-align: left; padding: 16px 18px; border-radius: var(--r-l); border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); transition: transform 0.1s, border-color 0.15s; align-content: start; }
-.mode.main { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--accent-soft); }
+.lesson-q { display: grid; gap: 12px; padding: 16px 18px; border-radius: var(--r-l); border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--accent-soft); }
+.lesson-q .mi { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--surface); color: var(--accent); }
+.lesson-q b { font-size: 18px; }
+.lesson-q > span { color: var(--ink-2); font-size: 14.5px; }
+.lesson-q .btn { justify-self: start; }
 .mode:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
 .mode .mi { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
 .mode b { font-size: 18px; }

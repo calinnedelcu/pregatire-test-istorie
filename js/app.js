@@ -139,23 +139,44 @@
   /* meniu de exersare pentru o lecție întreagă (capitol) */
   App.lessonMenu = function (chId) {
     var ch = D.chById[chId];
-    var nQ = (D.questions || []).filter(function (q) { return q.ch === chId; }).length;
+    var qs = (D.questions || []).filter(function (q) { return q.ch === chId; });
     var nCards = (D.cards || []).filter(function (c) { return c.ch === chId; }).length;
     var nCz = (D.cloze || []).filter(function (c) { return c.ch === chId; }).length;
-    var nHard = (D.questions || []).filter(function (q) { return q.ch === chId && (q.lvl || 1) >= 4; }).length;
-    var nMain = Math.min(20, nQ);
-    var m;
-    function item(icon, title, sub, fn, disabled, main) {
-      return h('button.mode' + (main ? '.main' : ''), { disabled: disabled, onClick: function () { m.close(); fn(); }, style: 'width:100%' },
+    var lvl = 0, n = 20, m;
+    function poolSize(l) { return qs.filter(function (q) { return (q.lvl || 1) >= l; }).length; }
+    function item(icon, title, sub, fn, disabled) {
+      return h('button.mode', { disabled: disabled, onClick: function () { m.close(); fn(); }, style: 'width:100%' },
         h('div.mi', U.icon(icon, 22)), h('b', title), h('span', sub));
     }
+    // alegerea întrebărilor: dificultate (cu câte sunt în fiecare) și câte întrebări
+    var chipsLvl = h('div.chips-pick'), chipsN = h('div.chips-pick');
+    function draw() {
+      U.clear(chipsLvl); U.clear(chipsN);
+      [[0, 'Toate'], [3, 'Grele'], [4, 'Foarte grele']].forEach(function (x) {
+        var c = poolSize(x[0]);
+        if (x[0] && !c) return;
+        chipsLvl.appendChild(h('button' + (lvl === x[0] ? '.on' : ''), { onClick: function () { lvl = x[0]; draw(); } }, x[1] + ' (' + c + ')'));
+      });
+      var np = poolSize(lvl), sizes = [10, 20, 30].filter(function (k) { return k < np; }).concat([np]);
+      if (sizes.indexOf(n) < 0) n = sizes.indexOf(20) >= 0 ? 20 : sizes[sizes.length - 1];
+      sizes.forEach(function (k) {
+        chipsN.appendChild(h('button' + (n === k ? '.on' : ''), { onClick: function () { n = k; draw(); } }, k === np ? 'Toate (' + np + ')' : String(k)));
+      });
+    }
+    draw();
+    var main = qs.length
+      ? h('div.lesson-q',
+          h('div.mi', U.icon('target', 22)), h('b', 'Întrebări din toată lecția'),
+          h('span', 'Câte puțin din fiecare secțiune, amestecate. Cele greșite sau nevăzute vin primele.'),
+          h('div.field', h('span.lab', 'Dificultate'), chipsLvl),
+          h('div.field', h('span.lab', 'Câte întrebări'), chipsN),
+          h('button.btn.primary', { onClick: function () { m.close(); App.go('quiz', { run: 1, chs: [chId], n: n, spread: 1, lvl: lvl }); } }, U.icon('target', 16), 'Începe întrebările'))
+      : h('p.muted', 'Nu există întrebări pentru această lecție.');
     m = App.modal({
       title: 'Exersează lecția',
       body: h('div.stack',
         h('p.muted', ch.title),
-        item('target', 'Întrebări din toată lecția', nQ ? U.nr(nMain, 'întrebare', 'întrebări') + ', câte puțin din fiecare secțiune' : 'Nu există întrebări', function () { App.go('quiz', { run: 1, chs: [chId], n: nMain, spread: 1 }); }, !nQ, true),
-        nHard ? item('flag', 'Doar întrebări foarte grele', U.nr(Math.min(20, nHard), 'întrebare', 'întrebări') + ' din cele ' + nHard + ' foarte grele ale lecției', function () { App.go('quiz', { run: 1, chs: [chId], n: Math.min(20, nHard), spread: 1, lvl: 4 }); }) : null,
-        nQ > nMain ? item('target', 'Toate întrebările lecției', U.nr(nQ, 'întrebare', 'întrebări') + ', amestecate', function () { App.go('quiz', { run: 1, chs: [chId], n: nQ, spread: 1 }); }) : null,
+        main,
         item('layers', 'Carduri din lecție', nCards ? U.nr(nCards, 'card', 'carduri') + '; cele scadente vin primele' : 'Nu există carduri', function () { App.go('cards', { run: 1, ch: chId, mode: 'smart' }); }, !nCards),
         item('pencil', 'Completează din notițe', nCz ? U.nr(nCz, 'propoziție', 'propoziții') + ' cu spații goale din lecție' : 'Nu există completări', function () { App.go('cloze', { ch: chId }); }, !nCz)
       )
