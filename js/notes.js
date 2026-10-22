@@ -359,7 +359,7 @@
       h('p', 'Textul de mai jos e preluat din notițele tale, rând cu rând. ',
         h('span.kw', 'Galbenul'), ' marchează cuvintele-cheie; ',
         h('span.fix', 'liniuța punctată'), ' arată o greșeală de tipar corectată (atinge-o ca să vezi ce scria); ',
-        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. La fiecare secțiune ai butonul cu poza originală. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
+        h('span.unsure', 'fundalul portocaliu', h('sup', '?')), ' arată un loc unde scrisul de mână e greu de citit. Pozele originale le deschizi cu butonul de mai sus. Toate cele ' + D.chapters.length + ' capitole intră la test.')));
 
     var toc = h('div.toc', { role: 'navigation', 'aria-label': 'Secțiunile capitolului' }, ch.sections.map(function (sec, i) {
       return h('button.chip' + (g.Store.data.read[sec.id] ? '.ok' : ''), { title: sec.title, onClick: function () {
@@ -441,8 +441,7 @@
     drawBody();
     var el = h('section.sec' + (isRead ? '.read' : ''), { id: 'sec-' + sec.id },
       h('div.sec-head',
-        h('h2', sec.title),
-        sec.photos.length ? photoLink(sec.photos, sec.photos.length > 1 ? 'Pozele originale' : 'Poza originală') : null
+        h('h2', sec.title)
       )
     );
     if (hasCards) {
@@ -461,22 +460,19 @@
         h('ul', ob.fixes.concat(ob.unsure, ob.blanks).map(function (t) { return h('li', t); }))));
     }
 
-    // notița mea
-    var mine = h('textarea.mynote', { id: 'mynote-' + sec.id, placeholder: 'Ce ai mai auzit la curs despre această parte? Scrie aici; rămâne salvat pe acest dispozitiv.', hidden: !Store.data.mynotes[sec.id], 'aria-label': 'Notița mea' });
-    mine.value = Store.data.mynotes[sec.id] || '';
-    mine.addEventListener('input', function () { Store.data.mynotes[sec.id] = mine.value; Store.save(); });
-
-    var cb = h('input', { type: 'checkbox', checked: isRead, id: 'read-' + sec.id });
-    cb.addEventListener('change', function () {
-      Store.markRead(sec.id, cb.checked);
-      el.classList.toggle('read', cb.checked);
-    });
-    el.appendChild(mine);
-    el.appendChild(h('div.sec-foot',
-      h('label.check', cb, 'Am citit'),
-      h('button.btn.sm', { onClick: function () { g.App.sectionMenu(sec.id); } }, U.icon('zap', 15), 'Exersează secțiunea'),
-      h('button.btn.sm.ghost', { onClick: function () { mine.hidden = !mine.hidden; if (!mine.hidden) mine.focus(); } }, U.icon('pencil', 15), 'Notița mea')
-    ));
+    // secțiunea se bifează singură ca citită când ajungi cu derularea la capătul ei
+    if (!isRead && g.IntersectionObserver) {
+      var end = h('div', { 'aria-hidden': 'true', style: 'height:48px;margin-top:-48px;pointer-events:none' });
+      var io = new g.IntersectionObserver(function (entries) {
+        if (!el.isConnected) { io.disconnect(); return; }
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        Store.markRead(sec.id, true);
+        el.classList.add('read');
+        io.disconnect();
+      });
+      el.appendChild(end);
+      io.observe(end);
+    }
     return el;
   }
 })(typeof window !== 'undefined' ? window : globalThis);
